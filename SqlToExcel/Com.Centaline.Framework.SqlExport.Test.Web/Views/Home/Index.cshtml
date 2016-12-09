@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../../Resource/Css/Site.css">
+<script type="text/javascript" src="@Url.Content("~/Resource/Scripts/jquery-1.10.2.min.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Resource/Scripts/template.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Resource/Scripts/jquery.twbsPagination.min.js")"></script>
+<div class="jumbotron">
+   test
+</div>
+<script language="javascript">
+    $(document).ready(function () {
+        SearchSqlToExcel(1);
+      
+
+    });
+
+    function SearchSqlToExcel(pageIndex) {
+        var parameters = {
+            sqlstatement: "select * from bastisTable",
+            ProviderName: "",
+            ServerName: "",
+            ValidataType: "",
+            UserName: "",
+            UserPwd: "",
+            DataBase: "",
+            ConString: "",
+            DBProvider:""
+        };
+     
+        $.ajax({
+            type: "post",
+            url: "@Url.Content("~/SqlExportService/QueryPage")",
+        dataType: "json",
+        global: false,
+        data: parameters,
+        async: false,
+        beforeSend: function(xml) {},
+        success: function (data) {
+            if (data.Code < 0) {
+                alert(data.Message);
+                return;
+            }
+            if (data.Code == 1) {
+                alert("未找到相关的数据!");
+                return;
+            }
+            data.list = data.Data;
+            var html = template("SearchSqlResultTemplate", data);
+            $("#SearchSouFunAgentDiv").html(html);
+            $("#SearchSouFunAgentPageDiv").twbsPagination({
+                totalPages: data.PageInfo.PageCount,
+                visiblePages: 10,
+                startPage: pageIndex,
+                first: '首页',
+                prev: '上一页',
+                next: '下一页',
+                last: '尾页',
+                onPageClick: function(event, page) {
+                    SearchSqlToExcel(page);
+                }
+            });
+        },
+        error: function(event, XMLHttpRequest, ajaxOptions, thrownError) {
+            alert(XMLHttpRequest);
+        },
+        complete: function(xml, ts) { }
+    });
+    }
+    
+
+</script>
+<div id="SearchSouFunAgentDiv"></div>
+<div id="SearchSouFunAgentPageDiv"></div>

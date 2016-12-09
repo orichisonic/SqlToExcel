@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.Centaline.Framework.SqlExport", "Com.Centaline.Framework.SqlExport\Com.Centaline.Framework.SqlExport.csproj", "{36C24EE0-338E-4279-8123-7AC3FFC5EAB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.Centaline.Framework.SqlExport.Test.Web", "Com.Centaline.Framework.SqlExport.Test.Web\Com.Centaline.Framework.SqlExport.Test.Web.csproj", "{E60DB632-FDDD-4759-89B8-341DBF3459ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36C24EE0-338E-4279-8123-7AC3FFC5EAB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36C24EE0-338E-4279-8123-7AC3FFC5EAB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36C24EE0-338E-4279-8123-7AC3FFC5EAB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36C24EE0-338E-4279-8123-7AC3FFC5EAB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E60DB632-FDDD-4759-89B8-341DBF3459ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E60DB632-FDDD-4759-89B8-341DBF3459ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E60DB632-FDDD-4759-89B8-341DBF3459ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E60DB632-FDDD-4759-89B8-341DBF3459ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
