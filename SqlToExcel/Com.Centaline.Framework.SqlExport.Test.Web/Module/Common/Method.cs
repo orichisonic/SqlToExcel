@@ -4,7 +4,7 @@ using System.Web;
 using System.Collections;
 using System.Text;
 
-namespace SqlExport.Modules.Common
+namespace SqlToExcel.Module.Common
 {
     public static class Method
     {

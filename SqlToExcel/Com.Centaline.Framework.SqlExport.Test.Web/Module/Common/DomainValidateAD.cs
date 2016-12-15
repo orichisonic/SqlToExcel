@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web;
-using SqlExport.Modules.Common;
 
-namespace SqlExport.Modules.Common
+
+namespace SqlToExcel.Module.Common
 {
     public class DomainValidateAD
     {

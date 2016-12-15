@@ -187,6 +187,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\SqlExportServiceController.cs" />
     <Compile Include="Module\ClassLibrary\NetJsonSerializer.cs" />
     <Compile Include="Module\ClassLibrary\ServiceLocator.cs" />
@@ -195,6 +196,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Module\Common\ConfigInfo.cs" />
+    <Compile Include="Module\Common\ConstValue.cs" />
+    <Compile Include="Module\Common\DomainValidateAD.cs" />
+    <Compile Include="Module\Common\Method.cs" />
+    <Compile Include="Module\Common\RemotingServiceCommon.cs" />
+    <Compile Include="Module\Common\UserLoginInfo.cs" />
+    <Compile Include="Module\Common\UserSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -244,7 +252,7 @@
     <Content Include="Resource\Spring\SpringObjects.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

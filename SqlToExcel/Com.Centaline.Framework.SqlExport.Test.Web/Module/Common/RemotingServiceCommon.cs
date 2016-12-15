@@ -4,7 +4,7 @@ using System.Text;
 using System.Net;
 using System.IO;
 
-namespace SqlExport.Modules.Common
+namespace SqlToExcel.Module.Common
 {
     public class RemotingServiceCommon
     {

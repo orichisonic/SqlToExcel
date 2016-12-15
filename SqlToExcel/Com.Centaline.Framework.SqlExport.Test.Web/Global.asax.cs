@@ -15,7 +15,7 @@ namespace SqlToExcel
     {
         protected void Application_Start()
         {
-            SqlExportContext.Init(new ServiceLocatorFatory().Create());
+           SqlExportContext.Init(new ServiceLocatorFatory().Create());
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

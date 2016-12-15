@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Web;
 
-namespace SqlExport.Modules.Common
+namespace SqlToExcel.Module.Common
 {
     public static class ConstValue
     {

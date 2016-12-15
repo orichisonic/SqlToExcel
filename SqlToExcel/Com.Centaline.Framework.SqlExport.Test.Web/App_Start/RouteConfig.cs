@@ -30,6 +30,13 @@ namespace SqlToExcel
               url: "ExportToCsv",
               defaults: new { controller = "SqlExportService", action = "ExportToCsv" }
           );
+
+            routes.MapRoute(
+             name: "Login",
+             url: "{controller}/{action}/{id}",
+             defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }
+         );
+
         }
     }
 }
