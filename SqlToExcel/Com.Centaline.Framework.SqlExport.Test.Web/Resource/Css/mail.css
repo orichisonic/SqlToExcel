@@ -1,0 +1,58 @@
+@charset "utf-8";
+
+.mian{
+	width: 1003px;
+	min-height: 100%;
+	height: 700px;
+	background-image: url(../Images/bg_pic.gif);
+	background-repeat: repeat-x;
+}
+.banner {
+	font-family: "方正大黑简体";
+	font-size: 38px;
+	color: #004a89;
+	height: 268px;
+	vertical-align: bottom;
+	text-align: center;
+	width: 1003px;
+	line-height: 250px;
+}
+.center {
+	height: 300px;
+	width: 1003px;
+}
+.denglu{
+	background-image: url(../Images/denglu.gif);
+	height: 300px;
+	width: 402px;
+
+}
+.text_zhanghao {
+	margin-left: 150px;
+	padding: 1px #333333 solid;
+
+
+}
+.text_zhanghao input {
+	margin-top: 53px;
+	margin-bottom: -37px;
+
+}
+.denglu_text {
+	background-image: url(../Images/anniu.png);
+	background-repeat: no-repeat;
+	height: 26px;
+	width: 83px;
+	font-size: 17.37px;
+	line-height: 26px;
+	color: #cccccc;
+	margin-top: 56px;
+	margin-left: 170px;
+}
+.denglu_text  a:link, .denglu_text  a:visited {
+	color: #cccccc;
+	text-decoration: none;
+}
+.denglu_text  a:hover {
+	color: #fff;
+}

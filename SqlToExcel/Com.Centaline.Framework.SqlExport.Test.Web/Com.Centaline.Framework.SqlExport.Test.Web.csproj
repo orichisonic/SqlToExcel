@@ -201,6 +201,8 @@
     <Content Include="Resource\Css\bootstrap.css" />
     <Content Include="Resource\Css\bootstrap.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="Resource\Css\common.css" />
+    <Content Include="Resource\Css\mail.css" />
     <Content Include="Resource\Css\main.css" />
     <Content Include="Resource\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -242,6 +244,7 @@
     <Content Include="Resource\Spring\SpringObjects.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

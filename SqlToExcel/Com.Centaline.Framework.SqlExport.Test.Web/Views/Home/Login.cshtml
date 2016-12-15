@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" href="~/resource/Css/mail.css" />
+    <link rel="stylesheet" type="text/css" href="~/resource/css/common.css" />
+    <script type="text/javascript" src="@Url.Content("~/Resource/Scripts/jquery-1.10.2.min.js")"></script>
+    <script>
+        function isEmpty(str){
+            return (str.replace(/(\s*)/g,'').length<1);
+        }
+        function doLogin() {
+            var name = $("#userName").val();
+            var pwd = $("#pwd").val();
+            if (isEmpty(name)) {
+                alert("请输入登录名.");
+                return;
+            }
+            if (isEmpty(pwd)) {
+                alert("请输入密码.");
+                return;
+            }
+            document.forms[0].submit();
+        }
+    </script>
+</head>
+<body>
+   
+        <div class="mian">
+            <div class="banner">2012行政秘书PPT制作大赛</div>
+            <div class="center">
+                <div class="denglu">
+                    <ul>
+                        <li class="text_zhanghao">
+                            <P><input type="text" name="userName" id="userName" style="width:126px; height:27px;"></P>
+                            <P><input type="password" name="pwd" id="pwd" style="width:126px; height:27px;"></P>
+                        </li>
+                        <li class="denglu_text">&nbsp;&nbsp;&nbsp;<a href="javascript:doLogin();">登陆</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+  
+</body>
+</html>

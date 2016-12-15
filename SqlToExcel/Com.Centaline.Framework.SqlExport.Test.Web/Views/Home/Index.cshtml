@@ -110,22 +110,7 @@
                 alert("分页导出CSV不成功!");
                 return;
             }
-            //data.list = data.Data;
-            //var html = template("SearchSqlResultTemplate", data);
-            //$("#SearchSouFunAgentDiv").html(html);
-            //$("#SearchSouFunAgentPageDiv").twbsPagination({
-            //    totalPages: data.PageInfo.PageCount,
-            //    visiblePages: 10,
-            //    startPage: pageIndex,
-            //    first: '首页',
-            //    prev: '上一页',
-            //    next: '下一页',
-            //    last: '尾页',
-            //    onPageClick: function(event, page) {
-            //        SearchSqlToExcel(page);
-            //    }
-            //});
-        },
+         },
         error: function(event, XMLHttpRequest, ajaxOptions, thrownError) {
             alert(XMLHttpRequest);
         },
@@ -137,3 +122,4 @@
 </script>
 <div id="SearchSouFunAgentDiv"></div>
 <div id="SearchSouFunAgentPageDiv"></div>
+<div id="ExportToCsv"></div>
