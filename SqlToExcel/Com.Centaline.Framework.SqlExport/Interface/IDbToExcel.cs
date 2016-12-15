@@ -7,7 +7,7 @@ using OfficeOpenXml;
 
 namespace SqlExport.Interface
 {
-    public interface IDbToDestination
+    public interface IDbToExcel
     {
 
         /// <summary>

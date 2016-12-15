@@ -43,6 +43,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
@@ -54,12 +55,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\DBConfig.cs" />
+    <Compile Include="Config\ExportConfig.cs" />
+    <Compile Include="DbToCsv.cs" />
     <Compile Include="DbToExcel.cs" />
     <Compile Include="DBUtility\CommandInfo.cs" />
     <Compile Include="DBUtility\DbHelperSQL.cs" />
     <Compile Include="DBUtility\Interface\IDBUtility.cs" />
+    <Compile Include="Entity\PageResult.cs" />
     <Compile Include="Entity\Result.cs" />
-    <Compile Include="Interface\IDbToDestination.cs" />
+    <Compile Include="Interface\IDbToCsv.cs" />
+    <Compile Include="Interface\IDbToExcel.cs" />
+    <Compile Include="Modules\Common\ConfigInfo.cs" />
+    <Compile Include="Modules\Common\ConstValue.cs" />
+    <Compile Include="Modules\Common\DomainValidateAD.cs" />
+    <Compile Include="Modules\Common\Method.cs" />
+    <Compile Include="Modules\Common\RemotingServiceCommon.cs" />
+    <Compile Include="Modules\Common\UserLoginInfo.cs" />
+    <Compile Include="Modules\Common\UserSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interface\ISqlExportService.cs" />
     <Compile Include="SqlExportContext.cs" />

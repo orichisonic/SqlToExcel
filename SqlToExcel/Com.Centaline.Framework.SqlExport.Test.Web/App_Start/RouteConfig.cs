@@ -24,6 +24,12 @@ namespace SqlToExcel
                url: "QueryPage",
                defaults: new { controller = "SqlExportService", action = "QueryPage" }
            );
+
+            routes.MapRoute(
+              name: "ExportToCsv",
+              url: "ExportToCsv",
+              defaults: new { controller = "SqlExportService", action = "ExportToCsv" }
+          );
         }
     }
 }

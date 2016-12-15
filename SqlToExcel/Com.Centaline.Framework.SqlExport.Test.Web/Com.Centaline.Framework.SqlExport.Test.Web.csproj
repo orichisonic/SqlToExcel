@@ -201,6 +201,7 @@
     <Content Include="Resource\Css\bootstrap.css" />
     <Content Include="Resource\Css\bootstrap.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="Resource\Css\main.css" />
     <Content Include="Resource\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Resource\Css\Site.css" />

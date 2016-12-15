@@ -11,6 +11,8 @@ namespace SqlExport.DBUtility.Interface
     {
         #region 执行SQL操作     
 
+        DbHelperSQL GetConnectstring(string connectString);
+
         /// <summary>
         /// 运行SQL语句
         /// </summary>

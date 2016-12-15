@@ -3,8 +3,10 @@
 
 <object id="ISqlExportService" type="SqlExport.SqlExportService">
   <property name="DBUtility" ref="IDBUtility"></property>
-  <property name="DbToDestination" ref="IDbToDestination"></property>
+  <property name="DbToExcel" ref="IDbToExcel"></property>
+  <property name="DbToCsv" ref="IDbToCsv"></property>
  </object>
   <object id="IDBUtility" type="SqlExport.DBUtility.DbHelperSQL"/>
-    <object id="IDbToDestination" type="SqlExport.DbToExcel"/>
+    <object id="IDbToExcel" type="SqlExport.DbToExcel"/>
+  <object id="IDbToCsv" type="SqlExport.DbToCsv"/>
 </objects>

@@ -10,8 +10,10 @@ using SqlExport.Config;
 
 namespace SqlExport
 {
-    public  class DbToExcel : IDbToDestination
+    public  class DbToExcel : IDbToExcel
     {
+        
+
         public void SaveExcel(string fileName, string sql, string sheetName)
         {
             FileInfo newFile = new FileInfo(fileName);

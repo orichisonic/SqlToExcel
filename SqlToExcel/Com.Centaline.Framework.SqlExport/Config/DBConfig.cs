@@ -119,37 +119,37 @@ namespace SqlExport.Config
                 return "";
             }
 
-            public string GetConstring()
+            public string GetConstring(string ProviderName,string ValidataType,string UserName,string UserPwd,string DataBase,string ServerName)
             {
-                if (db.ProviderName == "SQL")
+                if (ProviderName == "SQL")
                 {
                     StringBuilder sb = new StringBuilder();
-                    sb.Append("Data Source=" + db.ServerName);
-                    sb.Append(";Initial Catalog=" + db.DataBase + " ; ");
-                    if (db.ValidataType == "Windows身份认证")
+                    sb.Append("Data Source=" + ServerName);
+                    sb.Append(";Initial Catalog=" + DataBase + " ; ");
+                    if (ValidataType == "Windows身份认证")
                     {
                         sb.Append("Integrated Security=SSPI;Connect Timeout=10000");
                     }
                     else
                     {
 
-                        sb.Append("User ID=" + db.UserName + ";Password=" + db.UserPwd + ";");
+                        sb.Append("User ID=" + UserName + ";Password=" + UserPwd + ";");
 
                     }
                     return sb.ToString();
                 }
-                else if (db.ProviderName == "ACC")
+                else if (ProviderName == "ACC")
                 {
                     StringBuilder sb = new StringBuilder();
                     sb.Append("Provider=Microsoft.Ace.OleDb.12.0");
-                    sb.Append(";Data Source= " + db.DataBase);
+                    sb.Append(";Data Source= " + DataBase);
                     sb.Append(";Persist Security Info=False;");
                     return sb.ToString();
                 }
-                else if (db.ProviderName == "SQLite")
+                else if (ProviderName == "SQLite")
                 {
                     StringBuilder sb = new StringBuilder();
-                    sb.Append("Data Source= " + db.DataBase + ";");
+                    sb.Append("Data Source= " + DataBase + ";");
                     return sb.ToString();
                 }
                 else return "";

@@ -6,6 +6,8 @@ namespace SqlExport.Interface
 {
     public interface ISqlExportService
     {
+        Result<List<IDictionary<string, string>>> ExportToCsv(HttpRequestBase request);
+
         Result<List<IDictionary<string, string>>> Query(HttpRequestBase request);
     }
 }

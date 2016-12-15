@@ -1,7 +1,9 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+@Html.Partial("SearchSqlResultTemplate")
 <LINK REL=STYLESHEET TYPE="text/css" HREF="../../Resource/Css/Site.css">
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../../Resource/Css/main.css">
 <script type="text/javascript" src="@Url.Content("~/Resource/Scripts/jquery-1.10.2.min.js")"></script>
 <script type="text/javascript" src="@Url.Content("~/Resource/Scripts/template.js")"></script>
 <script type="text/javascript" src="@Url.Content("~/Resource/Scripts/jquery.twbsPagination.min.js")"></script>
@@ -9,25 +11,32 @@
    test
 </div>
 <script language="javascript">
-    $(document).ready(function () {
-        SearchSqlToExcel(1);
-      
+    $(document).ready(function() {
+        
+        SearchSqlToPage(1);
+        //SearchSqlToExcel(1);
+
 
     });
 
-    function SearchSqlToExcel(pageIndex) {
+
+    function SearchSqlToPage(pageIndex) {
         var parameters = {
-            sqlstatement: "select * from bastisTable",
-            ProviderName: "",
-            ServerName: "",
-            ValidataType: "",
-            UserName: "",
-            UserPwd: "",
-            DataBase: "",
+            sqlstatement: "select * from batisTable",
+            ProviderName: "SQL",
+            ServerName: "SHCYF59T",
+            UserName: "sa",
+            UserPwd: "newHard!@@#$",
+            DataBase: "CentalineTest",
             ConString: "",
-            DBProvider:""
+            DBProvider: "",
+            ValidateType: "SQL Server身份验证",
+            pageIndex: pageIndex,
+            pageSize: 10,
+            fileName: "d:\\a.xls"
         };
-     
+
+
         $.ajax({
             type: "post",
             url: "@Url.Content("~/SqlExportService/QueryPage")",
@@ -36,7 +45,7 @@
         data: parameters,
         async: false,
         beforeSend: function(xml) {},
-        success: function (data) {
+        success: function(data) {
             if (data.Code < 0) {
                 alert(data.Message);
                 return;
@@ -57,7 +66,7 @@
                 next: '下一页',
                 last: '尾页',
                 onPageClick: function(event, page) {
-                    SearchSqlToExcel(page);
+                    SearchSqlToPage(page);
                 }
             });
         },
@@ -67,7 +76,63 @@
         complete: function(xml, ts) { }
     });
     }
-    
+
+    function SearchSqlToExcel(pageIndex) {
+        var parameters = {
+            sqlstatement: "select * from batisTable",
+            ProviderName: "SQL",
+            ServerName: "SHCYF59T",
+            UserName: "sa",
+            UserPwd: "newHard!@@#$",
+            DataBase: "CentalineTest",
+            ConString: "",
+            DBProvider: "",
+            ValidateType: "SQL Server身份验证",
+            pageIndex: pageIndex,
+            pageSize: 10,
+            fileName: "d:\\a.xls"
+        };
+
+        $.ajax({
+            type: "post",
+            url: "@Url.Content("~/SqlExportService/ExportToCsv")",
+        dataType: "json",
+        global: false,
+        data: parameters,
+        async: false,
+        beforeSend: function(xml) {},
+        success: function (data) {
+            if (data.Code > 0) {
+                alert(data.Message);
+                return;
+            }
+            if (data.Code == 0) {
+                alert("分页导出CSV不成功!");
+                return;
+            }
+            //data.list = data.Data;
+            //var html = template("SearchSqlResultTemplate", data);
+            //$("#SearchSouFunAgentDiv").html(html);
+            //$("#SearchSouFunAgentPageDiv").twbsPagination({
+            //    totalPages: data.PageInfo.PageCount,
+            //    visiblePages: 10,
+            //    startPage: pageIndex,
+            //    first: '首页',
+            //    prev: '上一页',
+            //    next: '下一页',
+            //    last: '尾页',
+            //    onPageClick: function(event, page) {
+            //        SearchSqlToExcel(page);
+            //    }
+            //});
+        },
+        error: function(event, XMLHttpRequest, ajaxOptions, thrownError) {
+            alert(XMLHttpRequest);
+        },
+        complete: function(xml, ts) { }
+    });
+    }
+
 
 </script>
 <div id="SearchSouFunAgentDiv"></div>

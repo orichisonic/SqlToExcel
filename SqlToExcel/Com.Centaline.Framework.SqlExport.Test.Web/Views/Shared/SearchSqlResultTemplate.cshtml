@@ -1,36 +1,24 @@
-﻿<script id="SearchSouFunAgentTemplate" type="text/html">
+﻿<script id="SearchSqlResultTemplate" type="text/html">
     <table border="1" cellpadding="5" cellspacing="5">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>工号</th>
-                <th>姓名</th>
-                <th>上级</th>
-                <th>职位</th>
-                <th>手机</th>
-                <th>邮箱</th>
-                <th>职级</th>
-                <th>剖门</th>
-                <th>剖门编码</th>
-                <th>关注时间</th>
-                <th>VirtualFieldA</th>
+                <th>levels</th>
+                <th>name</th>
+                <th>parentID</th>
+                <th>birthDate</th>
+                <th>teacherID</th>
+                <th>RowNum</th>
             </tr>
         </thead>
         <tbody>
             {{each list as value}}
-            <tr PKID="{{value.UserID}}">
-                <td>{{value.UserID}}</td>
-                <td>{{value.UserCode}}</td>
-                <td>{{value.UserName}}</td>
-                <td>{{value.ParentID}}</td>
-                <td>{{value.Position}}</td>
-                <td>{{value.Mobile}}</td>
-                <td>{{value.Email}}</td>
-                <td>{{value.Levels}}</td>
-                <td>{{value.DeptName}}</td>
-                <td>{{value.Code}}</td>
-                <td>{{value.AttentionTime}}</td>
-                <td>{{value.VirtualFieldA}}</td>
+            <tr PKID="{{value.levels}}">
+                <td>{{value.levels}}</td>
+                <td>{{value.name}}</td>
+                <td>{{value.parentID}}</td>
+                <td>{{value.birthDate}}</td>
+                <td>{{value.teacherID}}</td>
+                <td>{{value.RowNum}}</td>
             </tr>
             {{/each}}
         </tbody>

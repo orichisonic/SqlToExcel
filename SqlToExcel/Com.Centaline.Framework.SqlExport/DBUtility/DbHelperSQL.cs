@@ -29,6 +29,12 @@ namespace SqlExport.DBUtility
         //    connectionString = strConnectionString;
         //}
 
+        public DbHelperSQL GetConnectstring(string connectString)
+        {
+            DbHelperSQL dbHelperSql=new DbHelperSQL(connectString);
+            return dbHelperSql;
+        }
+
         #region 公用方法
         /// <summary>
         /// 判断是否存在某表的某个字段
