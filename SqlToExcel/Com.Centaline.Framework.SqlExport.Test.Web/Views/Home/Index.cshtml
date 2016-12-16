@@ -12,11 +12,8 @@
 </div>
 <script language="javascript">
     $(document).ready(function() {
-        
         SearchSqlToPage(1);
         //SearchSqlToExcel(1);
-
-
     });
 
 
@@ -122,5 +119,5 @@
 </script>
 <div id="SearchSouFunAgentDiv"></div>
 <div id="SearchSouFunAgentPageDiv"></div>
-&nbsp;
-<div id="ExportToCsv"></div>
+<div class="ExportToCsv" onclick="SearchSqlToExcel(1)">导出到csv</div>
+<div class="ExportToCsv" onclick="">导出到excel</div>

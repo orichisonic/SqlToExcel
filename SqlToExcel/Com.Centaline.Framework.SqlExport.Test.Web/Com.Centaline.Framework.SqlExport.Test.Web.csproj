@@ -206,6 +206,25 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resource\Images\anniu.png" />
+    <Content Include="Resource\Images\bgkuang.gif" />
+    <Content Include="Resource\Images\bg_banner_01 - 副本.jpg" />
+    <Content Include="Resource\Images\bg_banner_01.jpg" />
+    <Content Include="Resource\Images\bg_banner_01_.gif" />
+    <Content Include="Resource\Images\bg_banner_01__ %282%29.jpg" />
+    <Content Include="Resource\Images\bg_banner_01__.jpg" />
+    <Content Include="Resource\Images\bg_pic.gif" />
+    <Content Include="Resource\Images\center_left.gif" />
+    <Content Include="Resource\Images\center_right.gif" />
+    <Content Include="Resource\Images\denglu.gif" />
+    <Content Include="Resource\Images\denglu0101.gif" />
+    <Content Include="Resource\Images\iepngfix.htc" />
+    <Content Include="Resource\Images\lijitoupiao.gif" />
+    <Content Include="Resource\Images\loding.gif" />
+    <Content Include="Resource\Images\pic_01.gif" />
+    <Content Include="Resource\Images\PNG_blank.gif" />
+    <Content Include="Resource\Images\shurukuang.gif" />
+    <Content Include="Resource\Images\v200811802116_02.gif" />
     <Content Include="Resource\Css\bootstrap.css" />
     <Content Include="Resource\Css\bootstrap.min.css" />
     <Content Include="favicon.ico" />

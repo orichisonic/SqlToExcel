@@ -17,7 +17,38 @@
                 alert("请输入密码.");
                 return;
             }
-            document.forms[0].submit();
+            //document.forms[0].submit();
+            Login(name, pwd);
+
+        }
+        
+        function Login(name,pwd) {
+            var parameters = {
+                name: name,
+                pwd: pwd
+            };
+
+            $.ajax({
+                type: "post",
+                url: "@Url.Content("~/Login/Submit")",
+                dataType: "json",
+            global: false,
+            data: parameters,
+            async: false,
+            beforeSend: function(xml) {},
+            success: function (data) {
+
+                if (data == "验证通过")
+                    window.location.href = "@Url.Content("~/Home/Index")";
+
+
+            },
+            error: function (event, XMLHttpRequest, ajaxOptions, thrownError) {
+               
+                alert(XMLHttpRequest);
+            },
+            complete: function(xml, ts) { }
+        });
         }
     </script>
 

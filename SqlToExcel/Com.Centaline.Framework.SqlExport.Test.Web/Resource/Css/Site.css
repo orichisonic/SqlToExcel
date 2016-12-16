@@ -23,8 +23,12 @@ textarea {
     max-width: 280px;
 }
 
-#ExportToCsv {
-     BORDER-RIGHT: #7b9ebd 1px solid; 
+.ExportToCsv {
+    position: relative;
+    float: left;
+    left: 10px;
+    width: 80px;
+    BORDER-RIGHT: #7b9ebd 1px solid; 
     PADDING-RIGHT: 2px; 
     BORDER-TOP: #7b9ebd 1px solid; 
     PADDING-LEFT: 2px; 
@@ -34,7 +38,6 @@ textarea {
     CURSOR: hand; COLOR: black; 
     PADDING-TOP: 2px; 
     BORDER-BOTTOM: #7b9ebd 1px solid;
-
-
+   
 }
 
