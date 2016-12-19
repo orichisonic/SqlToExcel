@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Config\DBConfig.cs" />
     <Compile Include="Config\ExportConfig.cs" />
+    <Compile Include="DataTabletoExcel.cs" />
     <Compile Include="DbToCsv.cs" />
     <Compile Include="DbToExcel.cs" />
     <Compile Include="DBUtility\CommandInfo.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="DBUtility\Interface\IDBUtility.cs" />
     <Compile Include="Entity\PageResult.cs" />
     <Compile Include="Entity\Result.cs" />
+    <Compile Include="Interface\IDataTabletoExcel.cs" />
     <Compile Include="Interface\IDbToCsv.cs" />
     <Compile Include="Interface\IDbToExcel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

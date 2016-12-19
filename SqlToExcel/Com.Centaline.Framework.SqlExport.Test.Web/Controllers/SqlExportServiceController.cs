@@ -45,5 +45,11 @@ namespace SqlToExcel.Controllers
             // return "";
         }
 
+        public string ExportToExcel()
+        {
+            object obj = ObjectContainer.Instance.GetObject<ISqlExportService>().ExportToExcel(Request);
+            return ObjectContainer.Instance.GetObject<IJsonSerializer>().ToJson(obj);
+            // return "";
+        }
     }
 }

@@ -23,6 +23,7 @@ namespace SqlExport
 
         public virtual IDbToCsv DbToCsv { get; set; }
 
+        public virtual IDataTabletoExcel DataTabletoExcel { get; set; }
 
         public Entity.Result<List<IDictionary<string, string>>> Query(HttpRequestBase request)
         {
@@ -41,8 +42,8 @@ namespace SqlExport
             string DataBase = request["DataBase"];
             //string ConString = request["ConString"];
             //string DBProvider = request["DBProvider"];
-            string pageIndex = request["pageIndex"];
-            string pageSize = request["pageSize"];
+            int pageIndex = int.Parse(request["pageIndex"]);
+            int pageSize = int.Parse(request["pageSize"]);
             string fileName = request["fileName"];
             DBConfig.db.ProviderName = "SQL";
             DBConfig.db.DataBase = DataBase;
@@ -50,7 +51,7 @@ namespace SqlExport
             DBConfig.db.DBProvider = DBUtility.GetConnectstring(_conString);
             string strSql =
                 "select * from (select ROW_NUMBER() over({0}) RowNum,*from({1}) T1 ) T2 where RowNum > {2} and RowNum<= {3}";
-            sqlstatement= string.Format(strSql,"order by levels", sqlstatement,pageIndex,pageSize);
+            sqlstatement= string.Format(strSql,"order by levels", sqlstatement,(pageIndex-1)*pageSize, pageIndex*pageSize);
             DataTable dt=DBConfig.db.DBProvider.ReturnDataTable(sqlstatement);
            
             if(dt.Rows.Count>0)
@@ -113,15 +114,43 @@ namespace SqlExport
             return queryResult;
         }
 
-
-        public int ExportExcelAsync(string FileName, string sql, string SheetName)
+        public Entity.Result<List<IDictionary<string, string>>> ExportToExcel(HttpRequestBase request)
         {
-            return DbToExcel.ExportExcel(FileName, sql, SheetName);
-            //return await Task.Run(
-            //    () => { return DbToDestination.ExportExcel(FileName, sql, SheetName); }
-            //    );
+            string errorMessage = null;
+            string json = null;
+            Entity.Result<List<IDictionary<string, string>>> queryResult = new Entity.Result<List<IDictionary<string, string>>>();
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
 
+            string sqlTableName = request["sqlTableName"];
+            string ProviderName = request["ProviderName"];
+            string ServerName = request["ServerName"];
+            string ValidataType = request["ValidataType"];
+            string UserName = request["UserName"];
+            string UserPwd = request["UserPwd"];
+            string DataBase = request["DataBase"];
+            //string ConString = request["ConString"];
+            //string DBProvider = request["DBProvider"];
+            //string pageIndex = request["pageIndex"];
+            //string pageSize = request["pageSize"];
+            string fileName = request["fileName"];
+            DBConfig.db.ProviderName = "SQL";
+            DBConfig.db.DataBase = DataBase;
+            //string _conString = DBConfig.db.GetConstring(ProviderName, ValidataType, UserName, UserPwd, DataBase, ServerName);
+            //DBConfig.db.DBProvider = DBUtility.GetConnectstring(_conString);
+
+            //int ret = ExportCSVAsync(fileName, sqlstatement);
+            int ret = DataTabletoExcel.ExportExcel(sqlTableName, 65535, fileName);
+            queryResult.Code = ret;
+
+            if (ret > 0)
+            {
+                queryResult.Message = "分页导出excel成功";
+            }
+            return queryResult;
         }
+
+
 
         public  int ExportCSVAsync( string filename, string sql)
         {

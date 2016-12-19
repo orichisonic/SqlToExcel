@@ -62,7 +62,6 @@ namespace SqlExport
             {
                 Stopwatch watch = Stopwatch.StartNew();
                 watch.Start();
-
                 SaveExcel(FileName, sql, SheetName);
                 watch.Stop();
                 return Convert.ToInt32(watch.ElapsedMilliseconds/1000);
