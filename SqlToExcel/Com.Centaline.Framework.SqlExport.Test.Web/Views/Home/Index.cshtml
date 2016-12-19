@@ -13,16 +13,11 @@
 <script language="javascript">
     $(document).ready(function() {
         SearchSqlToPage(1);
-      
-        //SearchSqlToExcel(1);
-    });
-
-  
-
+   });
 
     function SearchSqlToPage(pageIndex) {
         var parameters = {
-            sqlstatement: "select * from batisTable",
+            sqltable: "batisTable",
             ProviderName: "SQL",
             ServerName: "SHCYF59T",
             UserName: "sa",
@@ -35,7 +30,6 @@
             pageSize: 10,
             fileName: "d:\\a.xls"
         };
-
 
         $.ajax({
             type: "post",

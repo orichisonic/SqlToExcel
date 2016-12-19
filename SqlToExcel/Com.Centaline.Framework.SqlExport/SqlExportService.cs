@@ -33,7 +33,7 @@ namespace SqlExport
             Stopwatch sw = new Stopwatch();
             sw.Start();
 
-            string sqlstatement = request["sqlstatement"];
+            string sqltable = request["sqltable"];
             string ProviderName = request["ProviderName"];
             string ServerName = request["ServerName"];
             string ValidataType = request["ValidataType"];
@@ -51,7 +51,7 @@ namespace SqlExport
             DBConfig.db.DBProvider = DBUtility.GetConnectstring(_conString);
             string strSql =
                 "select * from (select ROW_NUMBER() over({0}) RowNum,*from({1}) T1 ) T2 where RowNum > {2} and RowNum<= {3}";
-            sqlstatement= string.Format(strSql,"order by levels", sqlstatement,(pageIndex-1)*pageSize, pageIndex*pageSize);
+            string sqlstatement= string.Format(strSql,"order by levels", "select * from "+sqltable, (pageIndex-1)*pageSize, pageIndex*pageSize);
             DataTable dt=DBConfig.db.DBProvider.ReturnDataTable(sqlstatement);
            
             if(dt.Rows.Count>0)
@@ -74,7 +74,8 @@ namespace SqlExport
             }
             queryResult.Data = result;
             queryResult.Message = "分页显示";
-                queryResult.PageInfo.PageCount = 10;
+            int count = DBUtility.ReturnTbCount(sqltable);
+            queryResult.PageInfo.PageCount = count/10;
             }
             return queryResult;
         }
@@ -94,10 +95,6 @@ namespace SqlExport
             string UserName = request["UserName"];
             string UserPwd = request["UserPwd"];
             string DataBase = request["DataBase"];
-            //string ConString = request["ConString"];
-            //string DBProvider = request["DBProvider"];
-            //string pageIndex = request["pageIndex"];
-            //string pageSize = request["pageSize"];
             string fileName = request["fileName"];
             DBConfig.db.ProviderName = "SQL";
             DBConfig.db.DataBase = DataBase;
@@ -105,6 +102,7 @@ namespace SqlExport
             DBConfig.db.DBProvider = DBUtility.GetConnectstring(_conString);
 
             int ret= ExportCSVAsync(fileName, sqlstatement);
+
             queryResult.Code = ret;
 
             if (ret > 0)
@@ -112,6 +110,28 @@ namespace SqlExport
                 queryResult.Message = "分页导出csv成功";
             }
             return queryResult;
+        }
+        public int ExportCSVAsync(string filename, string sql)
+        {
+
+            try
+            {
+                IDataReader reader = DBConfig.db.DBProvider.ExecuteReader(sql);
+                if (filename != null)
+                {
+                    return DbToCsv.ExportCsvAsync(reader, filename, ExportConfig.RowOutCount);
+                }
+                else
+                {
+                    return 0;
+                }
+                //MessageBox.Show("导数已完成！");
+                GC.Collect();
+            }
+            catch (Exception ee)
+            {
+                return 0;
+            }
         }
 
         public Entity.Result<List<IDictionary<string, string>>> ExportToExcel(HttpRequestBase request)
@@ -129,17 +149,9 @@ namespace SqlExport
             string UserName = request["UserName"];
             string UserPwd = request["UserPwd"];
             string DataBase = request["DataBase"];
-            //string ConString = request["ConString"];
-            //string DBProvider = request["DBProvider"];
-            //string pageIndex = request["pageIndex"];
-            //string pageSize = request["pageSize"];
             string fileName = request["fileName"];
             DBConfig.db.ProviderName = "SQL";
             DBConfig.db.DataBase = DataBase;
-            //string _conString = DBConfig.db.GetConstring(ProviderName, ValidataType, UserName, UserPwd, DataBase, ServerName);
-            //DBConfig.db.DBProvider = DBUtility.GetConnectstring(_conString);
-
-            //int ret = ExportCSVAsync(fileName, sqlstatement);
             int ret = DataTabletoExcel.ExportExcel(sqlTableName, 65535, fileName);
             queryResult.Code = ret;
 
@@ -152,35 +164,6 @@ namespace SqlExport
 
 
 
-        public  int ExportCSVAsync( string filename, string sql)
-        {
-
-            try
-            {
-                IDataReader reader = DBConfig.db.DBProvider.ExecuteReader(sql);
-                if (filename != null)
-                {
-                  return  DbToCsv.ExportCsvAsync(reader, filename, ExportConfig.RowOutCount);
-                }
-                else
-                {
-
-                    return 0;
-                }
-                
-              
-                //MessageBox.Show("导数已完成！");
-                GC.Collect();
-
-            }
-            catch (Exception ee)
-            {
-
-                return 0;
-            }
-
-
-
-        }
+     
     }
 }
