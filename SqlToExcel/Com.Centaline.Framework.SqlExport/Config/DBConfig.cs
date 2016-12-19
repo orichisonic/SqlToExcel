@@ -6,112 +6,112 @@ using System.Threading.Tasks;
 
 namespace SqlExport.Config
 {
-    public class DBConfig
+    public class DbConfig
     {
         /// <summary>
         /// 数据库配置类
         /// </summary>
      
 
-            public static DBConfig db = new DBConfig();
+            public static DbConfig Db = new DbConfig();
 
 
-            public DBConfig()
+            public DbConfig()
             {
 
             }
 
-            private string providerName;
+            private string _providerName;
             /// <summary>
             ///数据提供程序
             /// </summary>
             public string ProviderName
             {
-                get { return providerName; }
-                set { providerName = value; }
+                get { return _providerName; }
+                set { _providerName = value; }
             }
 
-            private string serverName;
+            private string _serverName;
             /// <summary>
             /// 服务器名
             /// </summary>
             public string ServerName
             {
-                get { return serverName; }
-                set { serverName = value; }
+                get { return _serverName; }
+                set { _serverName = value; }
             }
 
-            private string validataType;
+            private string _validataType;
             /// <summary>
             /// 验证类型
             /// </summary>
             public string ValidataType
             {
-                get { return validataType; }
-                set { validataType = value; }
+                get { return _validataType; }
+                set { _validataType = value; }
             }
-            private string userName;
+            private string _userName;
             /// <summary>
             /// 用户名
             /// </summary>
             public string UserName
             {
-                get { return userName; }
-                set { userName = value; }
+                get { return _userName; }
+                set { _userName = value; }
             }
-            private string userPwd;
+            private string _userPwd;
             /// <summary>
             /// 密码
             /// </summary>
             public string UserPwd
             {
-                get { return userPwd; }
-                set { userPwd = value; }
+                get { return _userPwd; }
+                set { _userPwd = value; }
             }
-            private string dataBase;
+            private string _dataBase;
             /// <summary>
             /// 数据库
             /// </summary>
             public string DataBase
             {
-                get { return dataBase; }
-                set { dataBase = value; }
+                get { return _dataBase; }
+                set { _dataBase = value; }
             }
 
-            private string conString;
+            private string _conString;
             /// <summary>
             /// 连接字符串
             /// </summary>
             public string ConString
             {
-                get { return conString; }
-                set { conString = value; }
+                get { return _conString; }
+                set { _conString = value; }
             }
-            private SqlExport.DBUtility.Interface.IDBUtility dbProvider;
+            private SqlExport.DBUtility.Interface.IDbUtility _dbProvider;
             /// <summary>
             /// 数据访问对象
             /// </summary>
-            public SqlExport.DBUtility.Interface.IDBUtility DBProvider
+            public SqlExport.DBUtility.Interface.IDbUtility DbProvider
             {
-                get { return dbProvider; }
-                set { dbProvider = value; }
+                get { return _dbProvider; }
+                set { _dbProvider = value; }
             }
 
-            public string GetSQLmasterConstring()
+            public string GetSqLmasterConstring()
             {
-                if (db.ProviderName == "SQL")
+                if (Db.ProviderName == "SQL")
                 {
                     StringBuilder sb = new StringBuilder();
-                    sb.Append("Data Source=" + db.ServerName);
+                    sb.Append("Data Source=" + Db.ServerName);
                     sb.Append(";Initial Catalog=master ;");
-                    if (db.ValidataType == "Windows身份认证")
+                    if (Db.ValidataType == "Windows身份认证")
                     {
                         sb.Append(" Integrated Security=SSPI;");
                     }
                     else
                     {
 
-                        sb.Append("User ID=" + db.UserName + ";Password=" + db.UserPwd + ";");
+                        sb.Append("User ID=" + Db.UserName + ";Password=" + Db.UserPwd + ";");
 
                     }
                     return sb.ToString();

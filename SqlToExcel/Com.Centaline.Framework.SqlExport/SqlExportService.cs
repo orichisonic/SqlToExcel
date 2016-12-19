@@ -13,11 +13,10 @@ using SqlExport.Interface;
 
 namespace SqlExport
 {
-
     public class SqlExportService : ISqlExportService
     {
 
-        public virtual IDBUtility DBUtility { get; set; }
+        public virtual IDbUtility DbUtility { get; set; }
 
         public virtual IDbToExcel DbToExcel { get; set; }
 
@@ -27,32 +26,28 @@ namespace SqlExport
 
         public Entity.Result<List<IDictionary<string, string>>> Query(HttpRequestBase request)
         {
-            string errorMessage = null;
-            string json = null;
             SqlExport.Entity.PageResult<List<IDictionary<string, string>>> queryResult = new SqlExport.Entity.PageResult<List<IDictionary<string, string>>>();
             Stopwatch sw = new Stopwatch();
             sw.Start();
 
             string sqltable = request["sqltable"];
-            string ProviderName = request["ProviderName"];
-            string ServerName = request["ServerName"];
-            string ValidataType = request["ValidataType"];
-            string UserName = request["UserName"];
-            string UserPwd = request["UserPwd"];
-            string DataBase = request["DataBase"];
-            //string ConString = request["ConString"];
-            //string DBProvider = request["DBProvider"];
+            string providerName = request["ProviderName"];
+            string serverName = request["ServerName"];
+            string validataType = request["ValidataType"];
+            string userName = request["UserName"];
+            string userPwd = request["UserPwd"];
+            string dataBase = request["DataBase"];
             int pageIndex = int.Parse(request["pageIndex"]);
             int pageSize = int.Parse(request["pageSize"]);
             string fileName = request["fileName"];
-            DBConfig.db.ProviderName = "SQL";
-            DBConfig.db.DataBase = DataBase;
-            string _conString = DBConfig.db.GetConstring(ProviderName, ValidataType, UserName, UserPwd, DataBase, ServerName);
-            DBConfig.db.DBProvider = DBUtility.GetConnectstring(_conString);
+            DbConfig.Db.ProviderName = "SQL";
+            DbConfig.Db.DataBase = dataBase;
+            string conString = DbConfig.Db.GetConstring(providerName, validataType, userName, userPwd, dataBase, serverName);
+            DbConfig.Db.DbProvider = DbUtility.GetConnectstring(conString);
             string strSql =
                 "select * from (select ROW_NUMBER() over({0}) RowNum,*from({1}) T1 ) T2 where RowNum > {2} and RowNum<= {3}";
             string sqlstatement= string.Format(strSql,"order by levels", "select * from "+sqltable, (pageIndex-1)*pageSize, pageIndex*pageSize);
-            DataTable dt=DBConfig.db.DBProvider.ReturnDataTable(sqlstatement);
+            DataTable dt=DbConfig.Db.DbProvider.ReturnDataTable(sqlstatement);
            
             if(dt.Rows.Count>0)
             { 
@@ -74,7 +69,7 @@ namespace SqlExport
             }
             queryResult.Data = result;
             queryResult.Message = "分页显示";
-            int count = DBUtility.ReturnTbCount(sqltable);
+            int count = DbUtility.ReturnTbCount(sqltable);
             queryResult.PageInfo.PageCount = count/10;
             }
             return queryResult;
@@ -82,26 +77,24 @@ namespace SqlExport
 
         public Entity.Result<List<IDictionary<string, string>>> ExportToCsv(HttpRequestBase request)
         {
-            string errorMessage = null;
-            string json = null;
             Entity.Result<List<IDictionary<string, string>>> queryResult = new Entity.Result<List<IDictionary<string, string>>>();
             Stopwatch sw = new Stopwatch();
             sw.Start();
 
             string sqlstatement = request["sqlstatement"];
-            string ProviderName = request["ProviderName"];
-            string ServerName = request["ServerName"];
-            string ValidataType = request["ValidataType"];
-            string UserName = request["UserName"];
-            string UserPwd = request["UserPwd"];
-            string DataBase = request["DataBase"];
+            string providerName = request["ProviderName"];
+            string serverName = request["ServerName"];
+            string validataType = request["ValidataType"];
+            string userName = request["UserName"];
+            string userPwd = request["UserPwd"];
+            string dataBase = request["DataBase"];
             string fileName = request["fileName"];
-            DBConfig.db.ProviderName = "SQL";
-            DBConfig.db.DataBase = DataBase;
-            string _conString = DBConfig.db.GetConstring(ProviderName,ValidataType,UserName,UserPwd,DataBase,ServerName);
-            DBConfig.db.DBProvider = DBUtility.GetConnectstring(_conString);
+            DbConfig.Db.ProviderName = "SQL";
+            DbConfig.Db.DataBase = dataBase;
+            string conString = DbConfig.Db.GetConstring(providerName,validataType,userName,userPwd,dataBase,serverName);
+            DbConfig.Db.DbProvider = DbUtility.GetConnectstring(conString);
 
-            int ret= ExportCSVAsync(fileName, sqlstatement);
+            int ret= ExportCsvAsync(fileName, sqlstatement);
 
             queryResult.Code = ret;
 
@@ -111,12 +104,12 @@ namespace SqlExport
             }
             return queryResult;
         }
-        public int ExportCSVAsync(string filename, string sql)
+        public int ExportCsvAsync(string filename, string sql)
         {
 
             try
             {
-                IDataReader reader = DBConfig.db.DBProvider.ExecuteReader(sql);
+                IDataReader reader = DbConfig.Db.DbProvider.ExecuteReader(sql);
                 if (filename != null)
                 {
                     return DbToCsv.ExportCsvAsync(reader, filename, ExportConfig.RowOutCount);
@@ -125,7 +118,6 @@ namespace SqlExport
                 {
                     return 0;
                 }
-                //MessageBox.Show("导数已完成！");
                 GC.Collect();
             }
             catch (Exception ee)
@@ -136,25 +128,22 @@ namespace SqlExport
 
         public Entity.Result<List<IDictionary<string, string>>> ExportToExcel(HttpRequestBase request)
         {
-            string errorMessage = null;
-            string json = null;
             Entity.Result<List<IDictionary<string, string>>> queryResult = new Entity.Result<List<IDictionary<string, string>>>();
             Stopwatch sw = new Stopwatch();
             sw.Start();
 
             string sqlTableName = request["sqlTableName"];
-            string ProviderName = request["ProviderName"];
-            string ServerName = request["ServerName"];
-            string ValidataType = request["ValidataType"];
-            string UserName = request["UserName"];
-            string UserPwd = request["UserPwd"];
-            string DataBase = request["DataBase"];
+            string providerName = request["ProviderName"];
+            string serverName = request["ServerName"];
+            string validataType = request["ValidataType"];
+            string userName = request["UserName"];
+            string userPwd = request["UserPwd"];
+            string dataBase = request["DataBase"];
             string fileName = request["fileName"];
-            DBConfig.db.ProviderName = "SQL";
-            DBConfig.db.DataBase = DataBase;
+            DbConfig.Db.ProviderName = "SQL";
+            DbConfig.Db.DataBase = dataBase;
             int ret = DataTabletoExcel.ExportExcel(sqlTableName, 65535, fileName);
             queryResult.Code = ret;
-
             if (ret > 0)
             {
                 queryResult.Message = "分页导出excel成功";

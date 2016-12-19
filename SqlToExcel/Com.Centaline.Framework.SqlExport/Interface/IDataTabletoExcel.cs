@@ -10,20 +10,20 @@ namespace SqlExport.Interface
 {
     public  interface IDataTabletoExcel
     {
-         DataTable GetDataTableFromSQL(string sql);
+         DataTable GetDataTableFromSql(string sql);
 
-        DataTable GetDataTableFromName(string TabalName);
+        DataTable GetDataTableFromName(string tableName);
 
-        bool SaveExcel(string SheetName, DataTable dt, ExcelPackage package);
+        bool SaveExcel(string sheetName, DataTable dt, ExcelPackage package);
 
-        void SaveExcel(string FileName, DataTable dt, string NewSheetName);
+        void SaveExcel(string fileName, DataTable dt, string newSheetName);
 
-        int ExportTemplate(string TabelName, string filename);
+        int ExportTemplate(string tabelName, string filename);
 
-        int ExportExcel(string SheetName, string sql, string filename);
+        int ExportExcel(string sheetName, string sql, string filename);
 
-        int ExportExcel(string TabelName, int PageSize, string filename);
+        int ExportExcel(string tabelName, int pageSize, string filename);
 
-        int ExportExcel(IList<string> TabelNames, string filename);
+        int ExportExcel(IList<string> tabelNames, string filename);
     }
 }

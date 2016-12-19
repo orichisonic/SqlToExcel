@@ -72,21 +72,21 @@ window.matchMedia = window.matchMedia || (function(doc, undefined){
 		requestQueue	= [],
 		
 		//loop stylesheets, send text content to translate
-		ripCSS			= function(){
+		ripCss			= function(){
 			var sheets 	= links,
 				sl 		= sheets.length,
 				i		= 0,
 				//vars for loop:
-				sheet, href, media, isCSS;
+				sheet, href, media, isCss;
 
 			for( ; i < sl; i++ ){
 				sheet	= sheets[ i ],
 				href	= sheet.href,
 				media	= sheet.media,
-				isCSS	= sheet.rel && sheet.rel.toLowerCase() === "stylesheet";
+				isCss	= sheet.rel && sheet.rel.toLowerCase() === "stylesheet";
 
 				//only links plz and prevent re-parsing
-				if( !!href && isCSS && !parsedSheets[ href ] ){
+				if( !!href && isCss && !parsedSheets[ href ] ){
 					// selectivizr exposes css through the rawCssText expando
 					if (sheet.styleSheet && sheet.styleSheet.rawCssText) {
 						translate( sheet.styleSheet.rawCssText, href, media );
@@ -322,10 +322,10 @@ window.matchMedia = window.matchMedia || (function(doc, undefined){
 		})();
 	
 	//translate CSS
-	ripCSS();
+	ripCss();
 	
 	//expose update for re-running respond later on
-	respond.update = ripCSS;
+	respond.update = ripCss;
 	
 	//adjust on resize
 	function callMedia(){

@@ -27,7 +27,7 @@ namespace SqlExport
                 try
                 {
                     ExcelWorksheet ws = package.Workbook.Worksheets.Add(sheetName);
-                    IDataReader reader = DBConfig.db.DBProvider.ExecuteReader(sql);
+                    IDataReader reader = DbConfig.Db.DbProvider.ExecuteReader(sql);
                     ws.Cells["A1"].LoadFromDataReader(reader, true);
                 }
                 catch (Exception ex)
@@ -38,13 +38,13 @@ namespace SqlExport
             }
         }
 
-        public bool SaveExcel(ExcelPackage package, string sql, string SheetName)
+        public bool SaveExcel(ExcelPackage package, string sql, string sheetName)
         {
 
             try
             {
-                ExcelWorksheet ws = package.Workbook.Worksheets.Add(SheetName);
-                IDataReader reader = DBConfig.db.DBProvider.ExecuteReader(sql);
+                ExcelWorksheet ws = package.Workbook.Worksheets.Add(sheetName);
+                IDataReader reader = DbConfig.Db.DbProvider.ExecuteReader(sql);
                 ws.Cells["A1"].LoadFromDataReader(reader, true);
 
                 return true;
@@ -56,13 +56,13 @@ namespace SqlExport
 
         }
 
-        public int ExportExcel(string FileName, string sql, string SheetName)
+        public int ExportExcel(string fileName, string sql, string sheetName)
         {
-            if (FileName != null)
+            if (fileName != null)
             {
                 Stopwatch watch = Stopwatch.StartNew();
                 watch.Start();
-                SaveExcel(FileName, sql, SheetName);
+                SaveExcel(fileName, sql, sheetName);
                 watch.Stop();
                 return Convert.ToInt32(watch.ElapsedMilliseconds/1000);
             }
@@ -70,17 +70,17 @@ namespace SqlExport
             return -1;
         }
 
-        public async Task<int> ExportExcelAsync(string FileName, string sql, string SheetName)
+        public async Task<int> ExportExcelAsync(string fileName, string sql, string sheetName)
         {
             return await Task.Run(
-                () => { return ExportExcel(FileName, sql, SheetName); }
+                () => { return ExportExcel(fileName, sql, sheetName); }
                 );
         }
 
         /// <summary>
         /// 多表格导出到一个EXCEL工作簿
         /// </summary>
-        public int ExportExcel(string[] TabelNameArray, string filename)
+        public int ExportExcel(string[] tabelNameArray, string filename)
         {
             if (filename != null)
             {
@@ -97,11 +97,11 @@ namespace SqlExport
 
                 using (ExcelPackage package = new ExcelPackage(newFile))
                 {
-                    for (int i = 0; i < TabelNameArray.Length; i++)
+                    for (int i = 0; i < tabelNameArray.Length; i++)
                     {
-                        string sql = "select * from  [" + TabelNameArray[i] + "]";
-                        IDataReader reader = DBConfig.db.DBProvider.ExecuteReader(sql);
-                        SaveExcel(package, sql, TabelNameArray[i]);
+                        string sql = "select * from  [" + tabelNameArray[i] + "]";
+                        IDataReader reader = DbConfig.Db.DbProvider.ExecuteReader(sql);
+                        SaveExcel(package, sql, tabelNameArray[i]);
 
                     }
                     package.Save();
@@ -113,28 +113,28 @@ namespace SqlExport
             return -1;
         }
 
-        public async Task<int> ExportExcelAsync(string[] TabelNameArray, string filename)
+        public async Task<int> ExportExcelAsync(string[] tabelNameArray, string filename)
         {
             return await Task.Run(
-                () => { return ExportExcel(TabelNameArray, filename); }
+                () => { return ExportExcel(tabelNameArray, filename); }
                 );
         }
 
-        public int ExportExcel(string[] TabelNameArray, string filename, string[] whereSQLArr)
+        public int ExportExcel(string[] tabelNameArray, string filename, string[] whereSqlArr)
         {
             if (filename != null)
             {
                 Stopwatch watch = Stopwatch.StartNew();
                 watch.Start();
                 FileInfo file = new FileInfo(filename);
-                int wherecount = whereSQLArr.Length;
-                int count = TabelNameArray.Length;
+                int wherecount = whereSqlArr.Length;
+                int count = tabelNameArray.Length;
                 for (int i = 0; i < wherecount; i++)
                 {
                     string s = filename.Substring(0, filename.LastIndexOf("\\"));
                     StringBuilder newfileName = new StringBuilder(s);
-                    int index = whereSQLArr[i].LastIndexOf("=");
-                    string sp = whereSQLArr[i].Substring(index + 2, whereSQLArr[i].Length - index - 3);
+                    int index = whereSqlArr[i].LastIndexOf("=");
+                    string sp = whereSqlArr[i].Substring(index + 2, whereSqlArr[i].Length - index - 3);
                     newfileName.Append("\\" + file.Name.Substring(0, file.Name.LastIndexOf(".")) + "_" + sp + ".xlsx");
                     FileInfo newFile = new FileInfo(newfileName.ToString());
                     if (newFile.Exists)
@@ -147,9 +147,9 @@ namespace SqlExport
                     {
                         for (int j = 0; j < count; j++)
                         {
-                            string sql = "select * from [" + TabelNameArray[j] + "]" + whereSQLArr[i];
-                            IDataReader reader = DBConfig.db.DBProvider.ExecuteReader(sql);
-                            SaveExcel(package, sql, TabelNameArray[j]);
+                            string sql = "select * from [" + tabelNameArray[j] + "]" + whereSqlArr[i];
+                            IDataReader reader = DbConfig.Db.DbProvider.ExecuteReader(sql);
+                            SaveExcel(package, sql, tabelNameArray[j]);
 
                         }
 
@@ -167,10 +167,10 @@ namespace SqlExport
             return -1;
         }
 
-        public async Task<int> ExportExcelAsync(string[] TabelNameArray, string filename, string[] whereSQLArr)
+        public async Task<int> ExportExcelAsync(string[] tabelNameArray, string filename, string[] whereSqlArr)
         {
             return await Task.Run(
-                () => { return ExportExcel(TabelNameArray, filename, whereSQLArr); }
+                () => { return ExportExcel(tabelNameArray, filename, whereSqlArr); }
                 );
 
         }

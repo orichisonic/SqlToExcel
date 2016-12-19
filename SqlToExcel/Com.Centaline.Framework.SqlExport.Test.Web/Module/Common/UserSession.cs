@@ -44,11 +44,11 @@ namespace SqlToExcel.Module.Common
             }
         }
 
-        public static bool LoginAD(string userName, string pwd)
+        public static bool LoginAd(string userName, string pwd)
         {
             bool result = true;
             string err = string.Empty;
-            if (DomainValidateAD.ValidateAD(userName, pwd, out err))
+            if (DomainValidateAd.ValidateAd(userName, pwd, out err))
             {
                 Login(new UserLoginInfo("",userName));
             }

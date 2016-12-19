@@ -7,7 +7,7 @@
   <property name="DbToCsv" ref="IDbToCsv"></property>
   <property name="DataTabletoExcel" ref="IDataTabletoExcel"></property>
  </object>
-  <object id="IDBUtility" type="SqlExport.DBUtility.DbHelperSQL"/>
+  <object id="IDBUtility" type="SqlExport.DBUtility.DbHelperSql"/>
     <object id="IDbToExcel" type="SqlExport.DbToExcel"/>
     <object id="IDbToCsv" type="SqlExport.DbToCsv"/>
   <object id="IDataTabletoExcel" type="SqlExport.DataTableToExcel"/>

@@ -18,39 +18,39 @@ namespace SqlExport.Interface
         /// <summary>
         /// 工作簿中添加新的SHEET
         /// </summary>
-        bool SaveExcel(ExcelPackage package, string sql, string SheetName);
+        bool SaveExcel(ExcelPackage package, string sql, string sheetName);
 
         /// <summary>
         /// 单表格导出到一个EXCEL工作簿
         /// </summary>
-        int ExportExcel(string FileName, string sql, string SheetName);
+        int ExportExcel(string fileName, string sql, string sheetName);
 
         /// <summary>
         /// 异步导出到一个EXCEL工作簿
         /// </summary>
-        /// <param name="FileName"></param>
+        /// <param name="fileName"></param>
         /// <param name="sql"></param>
-        /// <param name="SheetName"></param>
+        /// <param name="sheetName"></param>
         /// <returns></returns>
-         Task<int> ExportExcelAsync(string FileName, string sql, string SheetName);
+         Task<int> ExportExcelAsync(string fileName, string sql, string sheetName);
 
         /// <summary>
         /// 多表格导出到一个EXCEL工作簿
         /// </summary>
-        int ExportExcel(string[] TabelNameArray, string filename);
+        int ExportExcel(string[] tabelNameArray, string filename);
 
 
 
 
-        Task<int> ExportExcelAsync(string[] TabelNameArray, string filename);
+        Task<int> ExportExcelAsync(string[] tabelNameArray, string filename);
 
 
         /// <summary>
         /// 分拆导出
         /// </summary>
-        int ExportExcel(string[] TabelNameArray, string filename, string[] whereSQLArr);
+        int ExportExcel(string[] tabelNameArray, string filename, string[] whereSqlArr);
 
-        Task<int> ExportExcelAsync(string[] TabelNameArray, string filename, string[] whereSQLArr);
+        Task<int> ExportExcelAsync(string[] tabelNameArray, string filename, string[] whereSqlArr);
 
     }
 }

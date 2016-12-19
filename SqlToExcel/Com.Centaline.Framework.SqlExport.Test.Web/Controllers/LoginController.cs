@@ -32,7 +32,7 @@ namespace SqlToExcel.Controllers
              string userName = Request["name"];
              string pwd = Request["pwd"];
             object result;
-            if (UserSession.LoginAD(userName, pwd))
+            if (UserSession.LoginAd(userName, pwd))
             {
                 result= "验证通过";
             }

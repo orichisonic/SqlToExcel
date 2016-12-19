@@ -13,25 +13,25 @@ namespace SqlExport.DBUtility
     /// <summary>
     /// 数据访问抽象基础类
     /// </summary>
-    public class DbHelperSQL : IDBUtility
+    public class DbHelperSql : IDbUtility
     {
         //数据库连接字符串(web.config来配置)，多数据库可使用DbHelperSQLP来实现.
-        public static string connectionString = "";
-        public DbHelperSQL()
+        public static string ConnectionString = "";
+        public DbHelperSql()
         {
         }
-        public DbHelperSQL(string strConnectionString)
+        public DbHelperSql(string strConnectionString)
         {
-            connectionString = strConnectionString;
+            ConnectionString = strConnectionString;
         }
         //public void SetConnectionString(string strConnectionString)
         //{
         //    connectionString = strConnectionString;
         //}
 
-        public DbHelperSQL GetConnectstring(string connectString)
+        public DbHelperSql GetConnectstring(string connectString)
         {
-            DbHelperSQL dbHelperSql=new DbHelperSQL(connectString);
+            DbHelperSql dbHelperSql=new DbHelperSql(connectString);
             return dbHelperSql;
         }
 
@@ -52,9 +52,9 @@ namespace SqlExport.DBUtility
             }
             return Convert.ToInt32(res) > 0;
         }
-        public static int GetMaxID(string FieldName, string TableName)
+        public static int GetMaxId(string fieldName, string tableName)
         {
-            string strsql = "select max(" + FieldName + ")+1 from " + TableName;
+            string strsql = "select max(" + fieldName + ")+1 from " + tableName;
             object obj = GetSingle(strsql);
             if (obj == null)
             {
@@ -89,11 +89,11 @@ namespace SqlExport.DBUtility
         /// <summary>
         /// 表是否存在
         /// </summary>
-        /// <param name="TableName"></param>
+        /// <param name="tableName"></param>
         /// <returns></returns>
-        public static bool TabExists(string TableName)
+        public static bool TabExists(string tableName)
         {
-            string strsql = "select count(*) from sysobjects where id = object_id(N'[" + TableName + "]') and OBJECTPROPERTY(id, N'IsUserTable') = 1";
+            string strsql = "select count(*) from sysobjects where id = object_id(N'[" + tableName + "]') and OBJECTPROPERTY(id, N'IsUserTable') = 1";
             //string strsql = "SELECT count(*) FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[" + TableName + "]') AND type in (N'U')";
             object obj = GetSingle(strsql);
             int cmdresult;
@@ -142,13 +142,13 @@ namespace SqlExport.DBUtility
         /// <summary>
         /// 执行SQL语句，返回影响的记录数
         /// </summary>
-        /// <param name="SQLString">SQL语句</param>
+        /// <param name="sqlString">SQL语句</param>
         /// <returns>影响的记录数</returns>
-        public int ExecuteSql(string SQLString)
+        public int ExecuteSql(string sqlString)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand(SQLString, connection))
+                using (SqlCommand cmd = new SqlCommand(sqlString, connection))
                 {
                     try
                     {
@@ -166,16 +166,16 @@ namespace SqlExport.DBUtility
             }
         }
 
-        public static int ExecuteSqlByTime(string SQLString, int Times)
+        public static int ExecuteSqlByTime(string sqlString, int times)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand(SQLString, connection))
+                using (SqlCommand cmd = new SqlCommand(sqlString, connection))
                 {
                     try
                     {
                         connection.Open();
-                        cmd.CommandTimeout = Times;
+                        cmd.CommandTimeout = times;
                         int rows = cmd.ExecuteNonQuery();
                         return rows;
                     }
@@ -298,10 +298,10 @@ namespace SqlExport.DBUtility
         /// <summary>
         /// 执行多条SQL语句，实现数据库事务。
         /// </summary>
-        /// <param name="SQLStringList">多条SQL语句</param>		
-        public static int ExecuteSqlTran(List<String> SQLStringList)
+        /// <param name="sqlStringList">多条SQL语句</param>		
+        public static int ExecuteSqlTran(List<String> sqlStringList)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand();
@@ -311,9 +311,9 @@ namespace SqlExport.DBUtility
                 try
                 {
                     int count = 0;
-                    for (int n = 0; n < SQLStringList.Count; n++)
+                    for (int n = 0; n < sqlStringList.Count; n++)
                     {
-                        string strsql = SQLStringList[n];
+                        string strsql = sqlStringList[n];
                         if (strsql.Trim().Length > 1)
                         {
                             cmd.CommandText = strsql;
@@ -333,14 +333,14 @@ namespace SqlExport.DBUtility
         /// <summary>
         /// 执行带一个存储过程参数的的SQL语句。
         /// </summary>
-        /// <param name="SQLString">SQL语句</param>
+        /// <param name="sqlString">SQL语句</param>
         /// <param name="content">参数内容,比如一个字段是格式复杂的文章，有特殊符号，可以通过这个方式添加</param>
         /// <returns>影响的记录数</returns>
-        public static int ExecuteSql(string SQLString, string content)
+        public static int ExecuteSql(string sqlString, string content)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
-                SqlCommand cmd = new SqlCommand(SQLString, connection);
+                SqlCommand cmd = new SqlCommand(sqlString, connection);
                 System.Data.SqlClient.SqlParameter myParameter = new System.Data.SqlClient.SqlParameter("@content", SqlDbType.NText);
                 myParameter.Value = content;
                 cmd.Parameters.Add(myParameter);
@@ -364,14 +364,14 @@ namespace SqlExport.DBUtility
         /// <summary>
         /// 执行带一个存储过程参数的的SQL语句。
         /// </summary>
-        /// <param name="SQLString">SQL语句</param>
+        /// <param name="sqlString">SQL语句</param>
         /// <param name="content">参数内容,比如一个字段是格式复杂的文章，有特殊符号，可以通过这个方式添加</param>
         /// <returns>影响的记录数</returns>
-        public static object ExecuteSqlGet(string SQLString, string content)
+        public static object ExecuteSqlGet(string sqlString, string content)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
-                SqlCommand cmd = new SqlCommand(SQLString, connection);
+                SqlCommand cmd = new SqlCommand(sqlString, connection);
                 System.Data.SqlClient.SqlParameter myParameter = new System.Data.SqlClient.SqlParameter("@content", SqlDbType.NText);
                 myParameter.Value = content;
                 cmd.Parameters.Add(myParameter);
@@ -402,14 +402,14 @@ namespace SqlExport.DBUtility
         /// <summary>
         /// 向数据库里插入图像格式的字段(和上面情况类似的另一种实例)
         /// </summary>
-        /// <param name="strSQL">SQL语句</param>
+        /// <param name="strSql">SQL语句</param>
         /// <param name="fs">图像字节,数据库的字段类型为image的情况</param>
         /// <returns>影响的记录数</returns>
-        public static int ExecuteSqlInsertImg(string strSQL, byte[] fs)
+        public static int ExecuteSqlInsertImg(string strSql, byte[] fs)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
-                SqlCommand cmd = new SqlCommand(strSQL, connection);
+                SqlCommand cmd = new SqlCommand(strSql, connection);
                 System.Data.SqlClient.SqlParameter myParameter = new System.Data.SqlClient.SqlParameter("@fs", SqlDbType.Image);
                 myParameter.Value = fs;
                 cmd.Parameters.Add(myParameter);
@@ -434,13 +434,13 @@ namespace SqlExport.DBUtility
         /// <summary>
         /// 执行一条计算查询结果语句，返回查询结果（object）。
         /// </summary>
-        /// <param name="SQLString">计算查询结果语句</param>
+        /// <param name="sqlString">计算查询结果语句</param>
         /// <returns>查询结果（object）</returns>
-        public static object GetSingle(string SQLString)
+        public static object GetSingle(string sqlString)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand(SQLString, connection))
+                using (SqlCommand cmd = new SqlCommand(sqlString, connection))
                 {
                     try
                     {
@@ -463,16 +463,16 @@ namespace SqlExport.DBUtility
                 }
             }
         }
-        public static object GetSingle(string SQLString, int Times)
+        public static object GetSingle(string sqlString, int times)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand(SQLString, connection))
+                using (SqlCommand cmd = new SqlCommand(sqlString, connection))
                 {
                     try
                     {
                         connection.Open();
-                        cmd.CommandTimeout = Times;
+                        cmd.CommandTimeout = times;
                         object obj = cmd.ExecuteScalar();
                         if ((Object.Equals(obj, null)) || (Object.Equals(obj, System.DBNull.Value)))
                         {
@@ -494,12 +494,12 @@ namespace SqlExport.DBUtility
         /// <summary>
         /// 执行查询语句，返回SqlDataReader ( 注意：调用该方法后，一定要对SqlDataReader进行Close )
         /// </summary>
-        /// <param name="strSQL">查询语句</param>
+        /// <param name="strSql">查询语句</param>
         /// <returns>SqlDataReader</returns>
-        public IDataReader ExecuteReader(string strSQL)
+        public IDataReader ExecuteReader(string strSql)
         {
-            SqlConnection connection = new SqlConnection(connectionString);
-            SqlCommand cmd = new SqlCommand(strSQL, connection);
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            SqlCommand cmd = new SqlCommand(strSql, connection);
             cmd.CommandTimeout = 10000;
             try
             {
@@ -516,17 +516,17 @@ namespace SqlExport.DBUtility
         /// <summary>
         /// 执行查询语句，返回DataSet
         /// </summary>
-        /// <param name="SQLString">查询语句</param>
+        /// <param name="sqlString">查询语句</param>
         /// <returns>DataSet</returns>
-        public static DataSet Query(string SQLString)
+        public static DataSet Query(string sqlString)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 DataSet ds = new DataSet();
                 try
                 {
                     connection.Open();
-                    SqlDataAdapter command = new SqlDataAdapter(SQLString, connection);
+                    SqlDataAdapter command = new SqlDataAdapter(sqlString, connection);
                     command.Fill(ds, "ds");
                 }
                 catch (System.Data.SqlClient.SqlException ex)
@@ -536,16 +536,16 @@ namespace SqlExport.DBUtility
                 return ds;
             }
         }
-        public static DataSet Query(string SQLString, int Times)
+        public static DataSet Query(string sqlString, int times)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 DataSet ds = new DataSet();
                 try
                 {
                     connection.Open();
-                    SqlDataAdapter command = new SqlDataAdapter(SQLString, connection);
-                    command.SelectCommand.CommandTimeout = Times;
+                    SqlDataAdapter command = new SqlDataAdapter(sqlString, connection);
+                    command.SelectCommand.CommandTimeout = times;
                     command.Fill(ds, "ds");
                 }
                 catch (System.Data.SqlClient.SqlException ex)
@@ -565,17 +565,17 @@ namespace SqlExport.DBUtility
         /// <summary>
         /// 执行SQL语句，返回影响的记录数
         /// </summary>
-        /// <param name="SQLString">SQL语句</param>
+        /// <param name="sqlString">SQL语句</param>
         /// <returns>影响的记录数</returns>
-        public static int ExecuteSql(string SQLString, params SqlParameter[] cmdParms)
+        public static int ExecuteSql(string sqlString, params SqlParameter[] cmdParms)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     try
                     {
-                        PrepareCommand(cmd, connection, null, SQLString, cmdParms);
+                        PrepareCommand(cmd, connection, null, sqlString, cmdParms);
                         int rows = cmd.ExecuteNonQuery();
                         cmd.Parameters.Clear();
                         return rows;
@@ -592,10 +592,10 @@ namespace SqlExport.DBUtility
         /// <summary>
         /// 执行多条SQL语句，实现数据库事务。
         /// </summary>
-        /// <param name="SQLStringList">SQL语句的哈希表（key为sql语句，value是该语句的SqlParameter[]）</param>
-        public static void ExecuteSqlTran(Hashtable SQLStringList)
+        /// <param name="sqlStringList">SQL语句的哈希表（key为sql语句，value是该语句的SqlParameter[]）</param>
+        public static void ExecuteSqlTran(Hashtable sqlStringList)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
                 using (SqlTransaction trans = conn.BeginTransaction())
@@ -604,10 +604,10 @@ namespace SqlExport.DBUtility
                     try
                     {
                         //循环
-                        foreach (DictionaryEntry myDE in SQLStringList)
+                        foreach (DictionaryEntry myDe in sqlStringList)
                         {
-                            string cmdText = myDE.Key.ToString();
-                            SqlParameter[] cmdParms = (SqlParameter[])myDE.Value;
+                            string cmdText = myDe.Key.ToString();
+                            SqlParameter[] cmdParms = (SqlParameter[])myDe.Value;
                             PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
                             int val = cmd.ExecuteNonQuery();
                             cmd.Parameters.Clear();
@@ -628,7 +628,7 @@ namespace SqlExport.DBUtility
         /// <param name="SQLStringList">SQL语句的哈希表（key为sql语句，value是该语句的SqlParameter[]）</param>
         public static int ExecuteSqlTran(System.Collections.Generic.List<CommandInfo> cmdList)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
                 using (SqlTransaction trans = conn.BeginTransaction())
@@ -638,15 +638,15 @@ namespace SqlExport.DBUtility
                     {
                         int count = 0;
                         //循环
-                        foreach (CommandInfo myDE in cmdList)
+                        foreach (CommandInfo myDe in cmdList)
                         {
-                            string cmdText = myDE.CommandText;
-                            SqlParameter[] cmdParms = (SqlParameter[])myDE.Parameters;
+                            string cmdText = myDe.CommandText;
+                            SqlParameter[] cmdParms = (SqlParameter[])myDe.Parameters;
                             PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
 
-                            if (myDE.EffentNextType == EffentNextType.WhenHaveContine || myDE.EffentNextType == EffentNextType.WhenNoHaveContine)
+                            if (myDe.EffentNextType == EffentNextType.WhenHaveContine || myDe.EffentNextType == EffentNextType.WhenNoHaveContine)
                             {
-                                if (myDE.CommandText.ToLower().IndexOf("count(") == -1)
+                                if (myDe.CommandText.ToLower().IndexOf("count(") == -1)
                                 {
                                     trans.Rollback();
                                     return 0;
@@ -660,12 +660,12 @@ namespace SqlExport.DBUtility
                                 }
                                 isHave = Convert.ToInt32(obj) > 0;
 
-                                if (myDE.EffentNextType == EffentNextType.WhenHaveContine && !isHave)
+                                if (myDe.EffentNextType == EffentNextType.WhenHaveContine && !isHave)
                                 {
                                     trans.Rollback();
                                     return 0;
                                 }
-                                if (myDE.EffentNextType == EffentNextType.WhenNoHaveContine && isHave)
+                                if (myDe.EffentNextType == EffentNextType.WhenNoHaveContine && isHave)
                                 {
                                     trans.Rollback();
                                     return 0;
@@ -674,7 +674,7 @@ namespace SqlExport.DBUtility
                             }
                             int val = cmd.ExecuteNonQuery();
                             count += val;
-                            if (myDE.EffentNextType == EffentNextType.ExcuteEffectRows && val == 0)
+                            if (myDe.EffentNextType == EffentNextType.ExcuteEffectRows && val == 0)
                             {
                                 trans.Rollback();
                                 return 0;
@@ -695,10 +695,10 @@ namespace SqlExport.DBUtility
         /// <summary>
         /// 执行多条SQL语句，实现数据库事务。
         /// </summary>
-        /// <param name="SQLStringList">SQL语句的哈希表（key为sql语句，value是该语句的SqlParameter[]）</param>
-        public static void ExecuteSqlTranWithIndentity(System.Collections.Generic.List<CommandInfo> SQLStringList)
+        /// <param name="sqlStringList">SQL语句的哈希表（key为sql语句，value是该语句的SqlParameter[]）</param>
+        public static void ExecuteSqlTranWithIndentity(System.Collections.Generic.List<CommandInfo> sqlStringList)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
                 using (SqlTransaction trans = conn.BeginTransaction())
@@ -708,10 +708,10 @@ namespace SqlExport.DBUtility
                     {
                         int indentity = 0;
                         //循环
-                        foreach (CommandInfo myDE in SQLStringList)
+                        foreach (CommandInfo myDe in sqlStringList)
                         {
-                            string cmdText = myDE.CommandText;
-                            SqlParameter[] cmdParms = (SqlParameter[])myDE.Parameters;
+                            string cmdText = myDe.CommandText;
+                            SqlParameter[] cmdParms = (SqlParameter[])myDe.Parameters;
                             foreach (SqlParameter q in cmdParms)
                             {
                                 if (q.Direction == ParameterDirection.InputOutput)
@@ -743,10 +743,10 @@ namespace SqlExport.DBUtility
         /// <summary>
         /// 执行多条SQL语句，实现数据库事务。
         /// </summary>
-        /// <param name="SQLStringList">SQL语句的哈希表（key为sql语句，value是该语句的SqlParameter[]）</param>
-        public static void ExecuteSqlTranWithIndentity(Hashtable SQLStringList)
+        /// <param name="sqlStringList">SQL语句的哈希表（key为sql语句，value是该语句的SqlParameter[]）</param>
+        public static void ExecuteSqlTranWithIndentity(Hashtable sqlStringList)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
                 using (SqlTransaction trans = conn.BeginTransaction())
@@ -756,10 +756,10 @@ namespace SqlExport.DBUtility
                     {
                         int indentity = 0;
                         //循环
-                        foreach (DictionaryEntry myDE in SQLStringList)
+                        foreach (DictionaryEntry myDe in sqlStringList)
                         {
-                            string cmdText = myDE.Key.ToString();
-                            SqlParameter[] cmdParms = (SqlParameter[])myDE.Value;
+                            string cmdText = myDe.Key.ToString();
+                            SqlParameter[] cmdParms = (SqlParameter[])myDe.Value;
                             foreach (SqlParameter q in cmdParms)
                             {
                                 if (q.Direction == ParameterDirection.InputOutput)
@@ -791,17 +791,17 @@ namespace SqlExport.DBUtility
         /// <summary>
         /// 执行一条计算查询结果语句，返回查询结果（object）。
         /// </summary>
-        /// <param name="SQLString">计算查询结果语句</param>
+        /// <param name="sqlString">计算查询结果语句</param>
         /// <returns>查询结果（object）</returns>
-        public static object GetSingle(string SQLString, params SqlParameter[] cmdParms)
+        public static object GetSingle(string sqlString, params SqlParameter[] cmdParms)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     try
                     {
-                        PrepareCommand(cmd, connection, null, SQLString, cmdParms);
+                        PrepareCommand(cmd, connection, null, sqlString, cmdParms);
                         object obj = cmd.ExecuteScalar();
                         cmd.Parameters.Clear();
                         if ((Object.Equals(obj, null)) || (Object.Equals(obj, System.DBNull.Value)))
@@ -826,13 +826,13 @@ namespace SqlExport.DBUtility
         /// </summary>
         /// <param name="strSQL">查询语句</param>
         /// <returns>SqlDataReader</returns>
-        public static SqlDataReader ExecuteReader(string SQLString, params SqlParameter[] cmdParms)
+        public static SqlDataReader ExecuteReader(string sqlString, params SqlParameter[] cmdParms)
         {
-            SqlConnection connection = new SqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(ConnectionString);
             SqlCommand cmd = new SqlCommand();
             try
             {
-                PrepareCommand(cmd, connection, null, SQLString, cmdParms);
+                PrepareCommand(cmd, connection, null, sqlString, cmdParms);
                 SqlDataReader myReader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 cmd.Parameters.Clear();
                 return myReader;
@@ -852,14 +852,14 @@ namespace SqlExport.DBUtility
         /// <summary>
         /// 执行查询语句，返回DataSet
         /// </summary>
-        /// <param name="SQLString">查询语句</param>
+        /// <param name="sqlString">查询语句</param>
         /// <returns>DataSet</returns>
-        public static DataSet Query(string SQLString, params SqlParameter[] cmdParms)
+        public static DataSet Query(string sqlString, params SqlParameter[] cmdParms)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 SqlCommand cmd = new SqlCommand();
-                PrepareCommand(cmd, connection, null, SQLString, cmdParms);
+                PrepareCommand(cmd, connection, null, sqlString, cmdParms);
                 using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                 {
                     DataSet ds = new DataSet();
@@ -879,15 +879,15 @@ namespace SqlExport.DBUtility
         /// <summary>
         /// 运行SQL语句,返回DataTable对象
         /// </summary>
-        public DataTable ReturnDataTable(string SQL)
+        public DataTable ReturnDataTable(string sql)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 DataTable dt = new DataTable();
                 try
                 {
                     connection.Open();
-                    SqlDataAdapter command = new SqlDataAdapter(SQL, connection);
+                    SqlDataAdapter command = new SqlDataAdapter(sql, connection);
                     command.SelectCommand.CommandTimeout = 10000;
                     command.Fill(dt);
                 }
@@ -899,16 +899,16 @@ namespace SqlExport.DBUtility
             }
         }
 
-        public int ReturnTbCount(string tb_name)
+        public int ReturnTbCount(string tbName)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
 
                 try
                 {
-                    string SQL = "select  count(*)   from " + tb_name;
+                    string sql = "select  count(*)   from " + tbName;
                     connection.Open();
-                    SqlCommand cmd = new SqlCommand(SQL, connection);
+                    SqlCommand cmd = new SqlCommand(sql, connection);
                     int count = int.Parse(cmd.ExecuteScalar().ToString());
                     return count;
                 }
@@ -923,17 +923,17 @@ namespace SqlExport.DBUtility
         /// <summary>
         /// 运行SQL语句,返回DataTable对象
         /// </summary>
-        public DataTable ReturnDataTable(string SQL, int StartIndex, int PageSize)
+        public DataTable ReturnDataTable(string sql, int startIndex, int pageSize)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 DataTable dt = new DataTable();
                 try
                 {
                     connection.Open();
-                    SqlDataAdapter command = new SqlDataAdapter(SQL, connection);
+                    SqlDataAdapter command = new SqlDataAdapter(sql, connection);
                     command.SelectCommand.CommandTimeout = 10000;
-                    command.Fill(StartIndex, PageSize, dt);
+                    command.Fill(startIndex, pageSize, dt);
                 }
                 catch (System.Data.SqlClient.SqlException ex)
                 {
@@ -980,7 +980,7 @@ namespace SqlExport.DBUtility
         /// <returns>SqlDataReader</returns>
         public static SqlDataReader RunProcedure(string storedProcName, IDataParameter[] parameters)
         {
-            SqlConnection connection = new SqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(ConnectionString);
             SqlDataReader returnReader;
             connection.Open();
             SqlCommand command = BuildQueryCommand(connection, storedProcName, parameters);
@@ -994,7 +994,7 @@ namespace SqlExport.DBUtility
         /// </summary>
         public int RunProcedure(string storedProcName)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 int result;
                 connection.Open();
@@ -1016,27 +1016,27 @@ namespace SqlExport.DBUtility
         /// <returns>DataSet</returns>
         public static DataSet RunProcedure(string storedProcName, IDataParameter[] parameters, string tableName)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 DataSet dataSet = new DataSet();
                 connection.Open();
-                SqlDataAdapter sqlDA = new SqlDataAdapter();
-                sqlDA.SelectCommand = BuildQueryCommand(connection, storedProcName, parameters);
-                sqlDA.Fill(dataSet, tableName);
+                SqlDataAdapter sqlDa = new SqlDataAdapter();
+                sqlDa.SelectCommand = BuildQueryCommand(connection, storedProcName, parameters);
+                sqlDa.Fill(dataSet, tableName);
                 connection.Close();
                 return dataSet;
             }
         }
-        public static DataSet RunProcedure(string storedProcName, IDataParameter[] parameters, string tableName, int Times)
+        public static DataSet RunProcedure(string storedProcName, IDataParameter[] parameters, string tableName, int times)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 DataSet dataSet = new DataSet();
                 connection.Open();
-                SqlDataAdapter sqlDA = new SqlDataAdapter();
-                sqlDA.SelectCommand = BuildQueryCommand(connection, storedProcName, parameters);
-                sqlDA.SelectCommand.CommandTimeout = Times;
-                sqlDA.Fill(dataSet, tableName);
+                SqlDataAdapter sqlDa = new SqlDataAdapter();
+                sqlDa.SelectCommand = BuildQueryCommand(connection, storedProcName, parameters);
+                sqlDa.SelectCommand.CommandTimeout = times;
+                sqlDa.Fill(dataSet, tableName);
                 connection.Close();
                 return dataSet;
             }
@@ -1081,7 +1081,7 @@ namespace SqlExport.DBUtility
         /// <returns></returns>
         public static int RunProcedure(string storedProcName, IDataParameter[] parameters, out int rowsAffected)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 int result;
                 connection.Open();
@@ -1117,7 +1117,7 @@ namespace SqlExport.DBUtility
         /// <returns>DataTable</returns>
         public static DataTable GetSchema(string collectionName, string[] restictionValues)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 DataTable dt = new DataTable();
                 try
@@ -1144,7 +1144,7 @@ namespace SqlExport.DBUtility
         /// <returns>DataTable</returns>
         public static DataTable GetSchema(string collectionName)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 DataTable dt = new DataTable();
                 try
@@ -1166,17 +1166,17 @@ namespace SqlExport.DBUtility
         }
         public IList<string> GetDataBaseInfo()
         {
-            IList<string> DatabaseList = new List<string>();
+            IList<string> databaseList = new List<string>();
             DataTable dt = GetSchema("Databases");
             int num = dt.Rows.Count;
             if (dt.Rows.Count > 0)
             {
-                foreach (DataRow _DataRowItem in dt.Rows)
+                foreach (DataRow dataRowItem in dt.Rows)
                 {
-                    DatabaseList.Add(_DataRowItem["database_name"].ToString());
+                    databaseList.Add(dataRowItem["database_name"].ToString());
                 }
             }
-            return DatabaseList;
+            return databaseList;
 
         }
         public IList<string> GetTableInfo()
@@ -1187,79 +1187,79 @@ namespace SqlExport.DBUtility
             int num = dt.Rows.Count;
             if (dt.Rows.Count > 0)
             {
-                foreach (DataRow _DataRowItem in dt.Rows)
+                foreach (DataRow dataRowItem in dt.Rows)
                 {
-                    tableList.Add(_DataRowItem["table_name"].ToString());
+                    tableList.Add(dataRowItem["table_name"].ToString());
                 }
             }
             return tableList;
 
         }
-        public IList<string> GetColumnInfo(string TableName)
+        public IList<string> GetColumnInfo(string tableName)
         {
-            string[] restrictions = new string[] { null, null, TableName };
+            string[] restrictions = new string[] { null, null, tableName };
             DataTable tableinfo = GetSchema("Columns", restrictions);
-            IList<string> List = new List<string>();
+            IList<string> list = new List<string>();
             int count = tableinfo.Rows.Count;
             if (count > 0)
             {
                 var t = tableinfo.Select(null, "ordinal_position");
-                foreach (DataRow _DataRowItem in t)
+                foreach (DataRow dataRowItem in t)
                 {
-                    List.Add(_DataRowItem["Column_Name"].ToString());
+                    list.Add(dataRowItem["Column_Name"].ToString());
                 }
             }
 
-            return List;
+            return list;
 
 
         }
         public IList<string> GetProcInfo()
         {
-            IList<string> List = new List<string>();
+            IList<string> list = new List<string>();
             DataTable dt = GetSchema("Procedures");
             int num = dt.Rows.Count;
             if (dt != null && dt.Rows.Count > 0)
             {
-                foreach (DataRow _DataRowItem in dt.Rows)
+                foreach (DataRow dataRowItem in dt.Rows)
                 {
-                    if (_DataRowItem["routine_type"].ToString().ToUpper() != "FUNCTION")
-                    { List.Add(_DataRowItem["routine_name"].ToString()); }
+                    if (dataRowItem["routine_type"].ToString().ToUpper() != "FUNCTION")
+                    { list.Add(dataRowItem["routine_name"].ToString()); }
 
                 }
             }
-            return List;
+            return list;
         }
         public IList<string> GetFunctionInfo()
         {
-            IList<string> List = new List<string>();
+            IList<string> list = new List<string>();
             DataTable dt = GetSchema("Procedures");
             int num = dt.Rows.Count;
             if (dt != null && dt.Rows.Count > 0)
             {
-                foreach (DataRow _DataRowItem in dt.Rows)
+                foreach (DataRow dataRowItem in dt.Rows)
                 {
-                    if (_DataRowItem["routine_type"].ToString().ToUpper() == "FUNCTION")
-                    { List.Add(_DataRowItem["routine_name"].ToString()); }
+                    if (dataRowItem["routine_type"].ToString().ToUpper() == "FUNCTION")
+                    { list.Add(dataRowItem["routine_name"].ToString()); }
 
                 }
             }
-            return List;
+            return list;
         }
         public IList<string> GetViewInfo()
         {
-            IList<string> List = new List<string>();
+            IList<string> list = new List<string>();
             string[] rs = new string[] { null, null, null, "BASE TABLE" };
             DataTable dt = GetSchema("views");
             int num = dt.Rows.Count;
             if (dt.Rows.Count > 0)
             {
-                foreach (DataRow _DataRowItem in dt.Rows)
+                foreach (DataRow dataRowItem in dt.Rows)
                 {
-                    List.Add(_DataRowItem["table_name"].ToString());
+                    list.Add(dataRowItem["table_name"].ToString());
                 }
             }
-            return List;
+            return list;
         }
 
 
@@ -1267,14 +1267,14 @@ namespace SqlExport.DBUtility
         #endregion
 
         #region 批量导入数据库
-        public bool DatatableImport(IList<string> maplist, string TableName, DataTable dt)
+        public bool DatatableImport(IList<string> maplist, string tableName, DataTable dt)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
                 using (SqlBulkCopy bulkCopy = new SqlBulkCopy(connection))
                 {
-                    bulkCopy.DestinationTableName = TableName;
+                    bulkCopy.DestinationTableName = tableName;
                     foreach (string a in maplist)
                     {
                         bulkCopy.ColumnMappings.Add(a, a);
@@ -1297,15 +1297,15 @@ namespace SqlExport.DBUtility
 
 
         }
-        public int BulkCopyFromOpenrowset(IList<string> maplist, string TableName, string filename)
+        public int BulkCopyFromOpenrowset(IList<string> maplist, string tableName, string filename)
         {
             return -1;
         }
         #endregion
-        public int TruncateTable(string TableName)
+        public int TruncateTable(string tableName)
         {
 
-            return ExecuteSql("TRUNCATE TABLE   [" + TableName + "]");
+            return ExecuteSql("TRUNCATE TABLE   [" + tableName + "]");
 
         }
 

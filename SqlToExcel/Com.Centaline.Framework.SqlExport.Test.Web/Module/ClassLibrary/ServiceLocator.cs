@@ -8,8 +8,8 @@ namespace SqlToExcel.Module.ClassLibrary
 {
     public class ServiceLocator : IObjectContainer
     {
-        private object _LockObject = new object();
-        private static IApplicationContext _Container;
+        private object _lockObject = new object();
+        private static IApplicationContext _container;
 
         public ServiceLocator()
         {
@@ -18,17 +18,17 @@ namespace SqlToExcel.Module.ClassLibrary
         
         public T GetObject<T>() where T:class 
         {
-            return _Container.GetObject<T>();
+            return _container.GetObject<T>();
         }
 
         public T GetObject<T>(string name) where T:class 
         {
-            return _Container.GetObject<T>(name);
+            return _container.GetObject<T>(name);
         }
 
         public object GetObject(string name)
         {
-            return _Container.GetObject(name);
+            return _container.GetObject(name);
         }
 
         public void InitializeFromConfigFile(string configSectionName)
@@ -63,19 +63,19 @@ namespace SqlToExcel.Module.ClassLibrary
 
         public object GetService(Type serviceType)
         {
-            IDictionary<string,object> dictionary = _Container.GetObjectsOfType(serviceType);
+            IDictionary<string,object> dictionary = _container.GetObjectsOfType(serviceType);
             return dictionary[serviceType.FullName];
         }
 
         public void Init()
         {
-            lock (_LockObject)
+            lock (_lockObject)
             {
-                if (null == _Container)
+                if (null == _container)
                 {
                     try
                     {
-                        _Container = ContextRegistry.GetContext();
+                        _container = ContextRegistry.GetContext();
 
                     }
                     catch (System.Exception ex)

@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace SqlExport.DBUtility.Interface
 {
-    public interface IDBUtility
+    public interface IDbUtility
     {
         #region 执行SQL操作     
 
-        DbHelperSQL GetConnectstring(string connectString);
+        DbHelperSql GetConnectstring(string connectString);
 
         /// <summary>
         /// 运行SQL语句
         /// </summary>
-        /// <param name="SQL"></param>
-        int ExecuteSql(string SQL);
-        int TruncateTable(string TableName);
-        IDataReader ExecuteReader(string strSQL);
+        /// <param name="sqlString"></param>
+        int ExecuteSql(string sqlString);
+        int TruncateTable(string tableName);
+        IDataReader ExecuteReader(string strSql);
 
         #endregion
 
@@ -28,11 +28,11 @@ namespace SqlExport.DBUtility.Interface
         /// <summary>
         /// 运行SQL语句,返回DataTable对象
         /// </summary>
-        DataTable ReturnDataTable(string SQL, int StartIndex, int PageSize);
+        DataTable ReturnDataTable(string sql, int startIndex, int pageSize);
         /// <summary>
         /// 运行SQL语句,返回DataTable对象
         /// </summary>
-        DataTable ReturnDataTable(string SQL);
+        DataTable ReturnDataTable(string sql);
         #endregion
 
         #region 存储过程操作
@@ -45,19 +45,19 @@ namespace SqlExport.DBUtility.Interface
         /// </summary>
         IList<string> GetDataBaseInfo();
         IList<string> GetTableInfo();
-        IList<string> GetColumnInfo(string TableName);
+        IList<string> GetColumnInfo(string tableName);
         IList<string> GetProcInfo();
         //IList<string> GetFunctionInfo();
         IList<string> GetViewInfo();
-        int ReturnTbCount(string tb_name);
+        int ReturnTbCount(string tbName);
         #endregion
 
         #region 批量导入数据库
         /// <summary>
         /// 批量导入数据库
         /// </summary>
-        bool DatatableImport(IList<string> maplist, string TableName, DataTable dt);
-        int BulkCopyFromOpenrowset(IList<string> maplist, string TableName, string filename);
+        bool DatatableImport(IList<string> maplist, string tableName, DataTable dt);
+        int BulkCopyFromOpenrowset(IList<string> maplist, string tableName, string filename);
         #endregion
     }
 }

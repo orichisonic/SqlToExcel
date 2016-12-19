@@ -11,7 +11,7 @@ namespace SqlToExcel.Module.Common
             get { return int.Parse(System.Configuration.ConfigurationManager.AppSettings["CanVoteCheck"]); }
         }
         
-        public static string ADLoginUrl
+        public static string AdLoginUrl
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["ADLogin"]; }
         }
