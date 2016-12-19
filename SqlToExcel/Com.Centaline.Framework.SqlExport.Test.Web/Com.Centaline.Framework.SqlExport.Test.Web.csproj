@@ -188,6 +188,7 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\LoginDatabaseController.cs" />
     <Compile Include="Controllers\SqlExportServiceController.cs" />
     <Compile Include="Module\ClassLibrary\NetJsonSerializer.cs" />
     <Compile Include="Module\ClassLibrary\ServiceLocator.cs" />
@@ -206,6 +207,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Site.css" />
     <Content Include="Resource\Images\anniu.png" />
     <Content Include="Resource\Images\bgkuang.gif" />
     <Content Include="Resource\Images\bg_banner_01 - 副本.jpg" />
@@ -272,6 +274,10 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\LoginDatabase.cshtml" />
+    <Content Include="Views\LoginDatabase\LoginDatabase.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -37,6 +37,12 @@ namespace SqlToExcel
              defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }
          );
 
+            routes.MapRoute(
+           name: "LoginDatabase",
+           url: "{controller}/{action}/{id}",
+           defaults: new { controller = "LoginDatabase", action = "Index", id = UrlParameter.Optional }
+       );
+
         }
     }
 }
