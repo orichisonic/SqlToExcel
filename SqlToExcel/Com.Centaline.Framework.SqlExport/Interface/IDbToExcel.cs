@@ -9,7 +9,6 @@ namespace SqlExport.Interface
 {
     public interface IDbToExcel
     {
-
         /// <summary>
         /// 保存excel文件，覆盖相同文件名的文件
         /// </summary>
@@ -39,11 +38,7 @@ namespace SqlExport.Interface
         /// </summary>
         int ExportExcel(string[] tabelNameArray, string filename);
 
-
-
-
         Task<int> ExportExcelAsync(string[] tabelNameArray, string filename);
-
 
         /// <summary>
         /// 分拆导出

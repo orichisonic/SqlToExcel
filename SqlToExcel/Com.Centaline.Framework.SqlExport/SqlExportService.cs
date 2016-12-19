@@ -150,9 +150,5 @@ namespace SqlExport
             }
             return queryResult;
         }
-
-
-
-     
     }
 }

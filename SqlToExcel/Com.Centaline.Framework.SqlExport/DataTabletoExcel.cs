@@ -13,7 +13,6 @@ namespace SqlExport
 {
     public class DataTableToExcel: IDataTabletoExcel
     {
-        
 
         public  DataTable GetDataTableFromSql(string sql)
         {
@@ -35,7 +34,6 @@ namespace SqlExport
         /// </summary>
         public  bool SaveExcel(string sheetName, DataTable dt, ExcelPackage package)
         {
-
             try
             {
                 ExcelWorksheet ws = package.Workbook.Worksheets.Add(sheetName);
@@ -75,13 +73,11 @@ namespace SqlExport
             }
         }
 
-
         /// <summary>
         /// 单表格导出到excel工作簿
         /// </summary>
         public  int ExportTemplate(string tabelName, string filename)
         {
-            
             if (filename != null)
             {
                 Stopwatch watch = Stopwatch.StartNew();
@@ -93,7 +89,6 @@ namespace SqlExport
                 return Convert.ToInt32(watch.ElapsedMilliseconds / 1000);
             }
             return -1;
-
         }
 
         /// <summary>
@@ -111,8 +106,6 @@ namespace SqlExport
                 return Convert.ToInt32(watch.ElapsedMilliseconds / 1000);
             }
             return -1;
-
-
         }
 
         /// <summary>
@@ -192,7 +185,5 @@ namespace SqlExport
 
             return -1;
         }
-
-
     }
 }

@@ -10,7 +10,7 @@ namespace SqlExport.Interface
 {
     public  interface IDataTabletoExcel
     {
-         DataTable GetDataTableFromSql(string sql);
+        DataTable GetDataTableFromSql(string sql);
 
         DataTable GetDataTableFromName(string tableName);
 

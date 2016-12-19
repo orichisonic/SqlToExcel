@@ -10,7 +10,6 @@ namespace SqlExport.DBUtility.Interface
     public interface IDbUtility
     {
         #region 执行SQL操作     
-
         DbHelperSql GetConnectstring(string connectString);
 
         /// <summary>
@@ -20,7 +19,6 @@ namespace SqlExport.DBUtility.Interface
         int ExecuteSql(string sqlString);
         int TruncateTable(string tableName);
         IDataReader ExecuteReader(string strSql);
-
         #endregion
 
         #region 返回DataTable对象
