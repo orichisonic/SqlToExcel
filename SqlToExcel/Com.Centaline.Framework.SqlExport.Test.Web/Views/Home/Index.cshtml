@@ -12,10 +12,40 @@
 </div>
 <script language="javascript">
     $(document).ready(function() {
-        SearchSqlToPage(1);
-   });
+        //SearchSqlToPage(1);
+        var parameters = {};
+        $.ajax({
+            type: "post",
+            url: "@Url.Content("~/SqlExportService/IsLogin")",
+            dataType: "json",
+            global: false,
+            data: parameters,
+            async: false,
+            beforeSend: function(xml) {},
+            success: function (data) {
+              if (data=="登录失败")
+                    {
+                    $("#ExportToExcel").hide();
+                    }
+                else
+                    {
+                    $("#ExportToExcel").show();
+                    }
 
-    function SearchSqlToPage(pageIndex) {
+            },
+
+            error: function(event, xmlHttpRequest, ajaxOptions, thrownError) {
+                alert(xmlHttpRequest);
+            },
+        complete: function(xml, ts) {
+
+          
+        }
+        });
+    });
+     
+
+    @*function SearchSqlToPage(pageIndex) {
         var parameters = {
             sqltable: "batisTable",
             ProviderName: "SQL",
@@ -110,21 +140,20 @@
         },
         complete: function(xml, ts) { }
     });
-    }
+    }*@
 
-      function SearchSqlToExcel(pageIndex) {
+      function SearchSqlToExcel() {
         var parameters = {
-            sqlTableName: "batisTable",
-            ProviderName: "SQL",
-            ServerName: "SHCYF59T",
-            UserName: "sa",
-            UserPwd: "newHard!@@#$",
-            DataBase: "CentalineTest",
-            ConString: "",
-            DBProvider: "",
-            ValidateType: "SQL Server身份验证",
-            pageIndex: pageIndex,
-            pageSize: 10,
+            //sqlTableName: "WeChatOrg",
+            //ProviderName: "SQL",
+            //ServerName: "10.4.254.30\webchat",
+            //UserName: "itdept",
+            //UserPwd: "it.good",
+            //DataBase: "WeChatOrg",
+            //ValidateType: "SQL Server身份验证",
+            //pageIndex: pageIndex,
+            //pageSize: 10,
+            Sheetname: "User",
             fileName: "d:\\a.xls"
         };
 
@@ -142,7 +171,7 @@
                 return;
             }
             if (data.Code == 0) {
-                alert("分页导出CSV不成功!");
+                alert("导出excel不成功!");
                 return;
             }
          },
@@ -155,10 +184,7 @@
 
 
 </script>
-<div id="SearchSouFunAgentDiv"></div>
+@*<div id="SearchSouFunAgentDiv"></div>
 <div id="SearchSouFunAgentPageDiv"></div>
-<div class="ExportToCsv" onclick="SearchSqlToCsv(1)">导出到csv</div>
-@*<div id="tableName" class="tableName">选择导出表：<select ></select>
-</div>
-<div  id="rowNumber" class="rowNumber">行数设置：<select></select></div>*@
-<div class="ExportToExcel" onclick="SearchSqlToExcel(1)">导出到excel</div>
+<div class="ExportToCsv" onclick="SearchSqlToCsv(1)">导出到csv</div>*@
+<div id="ExportToExcel" class="ExportToExcel"  onclick="SearchSqlToExcel()">导出到excel</div>

@@ -39,6 +39,14 @@ namespace SqlToExcel.Module.Common
             }
         }
 
+        public static string WhiteList
+        {
+            get
+            {
+                return string.Format(System.Configuration.ConfigurationManager.AppSettings["WhiteList"], HttpContext.Current.Server.MapPath(DbPath));
+            }
+        }
+
 
     }
 }

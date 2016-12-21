@@ -24,6 +24,9 @@ namespace SqlExport
 
         public virtual IDataTabletoExcel DataTabletoExcel { get; set; }
 
+        public static string sql =
+            "SELECT  [UserID],[UserCode],[UserName],[ParentID],[Position],[Mobile],[Email],[Levels],[AttentionTime]FROM Users WHERE CreateStatus = 1 AND(AttentionState = 1); ";
+
         public Entity.Result<List<IDictionary<string, string>>> Query(HttpRequestBase request)
         {
             SqlExport.Entity.PageResult<List<IDictionary<string, string>>> queryResult = new SqlExport.Entity.PageResult<List<IDictionary<string, string>>>();
@@ -132,21 +135,28 @@ namespace SqlExport
             Stopwatch sw = new Stopwatch();
             sw.Start();
 
-            string sqlTableName = request["sqlTableName"];
-            string providerName = request["ProviderName"];
-            string serverName = request["ServerName"];
-            string validataType = request["ValidataType"];
-            string userName = request["UserName"];
-            string userPwd = request["UserPwd"];
-            string dataBase = request["DataBase"];
+            string sqlTableName = request["Sheetname"];
+            string providerName = ConfigInfo.ProviderName;
+            string serverName =ConfigInfo.ServerName;
+            string validataType = ConfigInfo.ValidateType;
+            string userName = ConfigInfo.UserName;
+            string userPwd = ConfigInfo.UserPwd;
+            string dataBase = ConfigInfo.DataBase;
             string fileName = request["fileName"];
-            DbConfig.Db.ProviderName = "SQL";
-            DbConfig.Db.DataBase = dataBase;
-            int ret = DataTabletoExcel.ExportExcel(sqlTableName, 65535, fileName);
+            string sql = "SELECT  [UserID],[UserCode],[UserName],[ParentID],[Position],[Mobile],[Email],[Levels],[AttentionTime]FROM Users WHERE CreateStatus = 1 AND(AttentionState = 1); ";
+               
+            DbConfig.Db.ProviderName = ConfigInfo.ProviderName;
+            DbConfig.Db.DataBase = ConfigInfo.DataBase;
+            string conString = DbConfig.Db.GetConstring(providerName, validataType, userName, userPwd, dataBase, serverName);
+            DbConfig.Db.DbProvider = DbUtility.GetConnectstring(conString);
+            //int ret = DataTabletoExcel.ExportExcel(sqlTableName, 65535, fileName);
+            IDataReader reader = DbConfig.Db.DbProvider.ExecuteReader(sql);
+            int ret= DbToExcel.SaveExcel(fileName, sql, sqlTableName);
+
             queryResult.Code = ret;
             if (ret > 0)
             {
-                queryResult.Message = "分页导出excel成功";
+                queryResult.Message = "导出excel成功";
             }
             return queryResult;
         }

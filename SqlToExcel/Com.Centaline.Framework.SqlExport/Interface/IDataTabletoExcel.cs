@@ -24,6 +24,8 @@ namespace SqlExport.Interface
 
         int ExportExcel(string tabelName, int pageSize, string filename);
 
+      
+
         int ExportExcel(IList<string> tabelNames, string filename);
     }
 }

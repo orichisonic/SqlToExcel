@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\ConfigInfo.cs" />
     <Compile Include="Config\DBConfig.cs" />
     <Compile Include="Config\ExportConfig.cs" />
     <Compile Include="DataTabletoExcel.cs" />

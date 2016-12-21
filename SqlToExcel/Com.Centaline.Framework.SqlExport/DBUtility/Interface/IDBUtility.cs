@@ -48,6 +48,8 @@ namespace SqlExport.DBUtility.Interface
         //IList<string> GetFunctionInfo();
         IList<string> GetViewInfo();
         int ReturnTbCount(string tbName);
+
+        int ReturnSqlCount(string sql);
         #endregion
 
         #region 批量导入数据库

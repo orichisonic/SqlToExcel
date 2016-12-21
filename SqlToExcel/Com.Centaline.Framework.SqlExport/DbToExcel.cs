@@ -14,7 +14,7 @@ namespace SqlExport
     {
         
 
-        public void SaveExcel(string fileName, string sql, string sheetName)
+        public int SaveExcel(string fileName, string sql, string sheetName)
         {
             FileInfo newFile = new FileInfo(fileName);
             if (newFile.Exists)
@@ -35,6 +35,7 @@ namespace SqlExport
                     throw ex;
                 }
                 package.Save();
+                return 1;
             }
         }
 

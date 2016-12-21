@@ -920,6 +920,27 @@ namespace SqlExport.DBUtility
             }
         }
 
+        public int ReturnSqlCount(string sql)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+
+                try
+                {
+                    string sqlStatement = "select  count(*)   from  (" + sql+") as t";
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(sql, connection);
+                    int count = int.Parse(cmd.ExecuteScalar().ToString());
+                    return count;
+                }
+                catch (System.Data.SqlClient.SqlException ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+
+            }
+        }
+
         /// <summary>
         /// 运行SQL语句,返回DataTable对象
         /// </summary>

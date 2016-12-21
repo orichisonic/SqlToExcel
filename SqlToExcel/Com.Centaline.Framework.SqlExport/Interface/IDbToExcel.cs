@@ -12,7 +12,7 @@ namespace SqlExport.Interface
         /// <summary>
         /// 保存excel文件，覆盖相同文件名的文件
         /// </summary>
-        void SaveExcel(string fileName, string sql, string sheetName);
+        int SaveExcel(string fileName, string sql, string sheetName);
 
         /// <summary>
         /// 工作簿中添加新的SHEET
