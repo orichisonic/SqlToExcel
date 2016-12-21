@@ -73,7 +73,8 @@ namespace SqlToExcel.Controllers
             {
                 if ((userLoginsession as UserLoginInfo).UserName == whitelist)
                 {
-                    object obj = ObjectContainer.Instance.GetObject<ISqlExportService>().ExportToExcel(Request);
+                    string sql = "SELECT  [UserID],[UserCode],[UserName],[ParentID],[Position],[Mobile],[Email],[Levels],[AttentionTime]FROM Users WHERE CreateStatus = 1 AND(AttentionState = 1); ";
+                    object obj = ObjectContainer.Instance.GetObject<ISqlExportService>().ExportToExcel(Request,sql);
                     return ObjectContainer.Instance.GetObject<IJsonSerializer>().ToJson(obj);
                 }
             }

@@ -13,6 +13,9 @@
 <script language="javascript">
     $(document).ready(function() {
         //SearchSqlToPage(1);
+
+      
+
         var parameters = {};
         $.ajax({
             type: "post",
@@ -25,11 +28,11 @@
             success: function (data) {
               if (data=="登录失败")
                     {
-                    $("#ExportToExcel").hide();
+                  $("#Export").hide();
                     }
                 else
                     {
-                    $("#ExportToExcel").show();
+                  $("#Export").show();
                     }
 
             },
@@ -142,17 +145,10 @@
     });
     }*@
 
-      function SearchSqlToExcel() {
+    function SearchSqlToExcel() {
+
+       //alert($("#uploadfileRealPath").val());
         var parameters = {
-            //sqlTableName: "WeChatOrg",
-            //ProviderName: "SQL",
-            //ServerName: "10.4.254.30\webchat",
-            //UserName: "itdept",
-            //UserPwd: "it.good",
-            //DataBase: "WeChatOrg",
-            //ValidateType: "SQL Server身份验证",
-            //pageIndex: pageIndex,
-            //pageSize: 10,
             Sheetname: "User",
             fileName: "d:\\a.xls"
         };
@@ -181,10 +177,13 @@
         complete: function(xml, ts) { }
     });
     }
-
-
+    
+    function showRealPath(filePath) {
+        $("#uploadfileRealPath")[0].value = filePath;
+    }
 </script>
 @*<div id="SearchSouFunAgentDiv"></div>
 <div id="SearchSouFunAgentPageDiv"></div>
 <div class="ExportToCsv" onclick="SearchSqlToCsv(1)">导出到csv</div>*@
-<div id="ExportToExcel" class="ExportToExcel"  onclick="SearchSqlToExcel()">导出到excel</div>
+<div id="Export"><div id="ExportToExcel" class="ExportToExcel" onclick="SearchSqlToExcel()">导出到excel</div></div>
+@*<div id="Export">导出的文件地址:<input type="file" name="uploadfile" onfocus="showRealPath(this.value);" readonly="true"><input type="hidden" name="uploadfileRealPath"><div id="ExportToExcel" class="ExportToExcel" onclick="SearchSqlToExcel()">导出到excel</div></div>*@

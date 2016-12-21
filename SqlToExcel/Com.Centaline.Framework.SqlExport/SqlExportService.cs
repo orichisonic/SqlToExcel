@@ -129,7 +129,7 @@ namespace SqlExport
             }
         }
 
-        public Entity.Result<List<IDictionary<string, string>>> ExportToExcel(HttpRequestBase request)
+        public Entity.Result<List<IDictionary<string, string>>> ExportToExcel(HttpRequestBase request,string sql)
         {
             Entity.Result<List<IDictionary<string, string>>> queryResult = new Entity.Result<List<IDictionary<string, string>>>();
             Stopwatch sw = new Stopwatch();
@@ -143,7 +143,7 @@ namespace SqlExport
             string userPwd = ConfigInfo.UserPwd;
             string dataBase = ConfigInfo.DataBase;
             string fileName = request["fileName"];
-            string sql = "SELECT  [UserID],[UserCode],[UserName],[ParentID],[Position],[Mobile],[Email],[Levels],[AttentionTime]FROM Users WHERE CreateStatus = 1 AND(AttentionState = 1); ";
+            //string sql = "SELECT  [UserID],[UserCode],[UserName],[ParentID],[Position],[Mobile],[Email],[Levels],[AttentionTime]FROM Users WHERE CreateStatus = 1 AND(AttentionState = 1); ";
                
             DbConfig.Db.ProviderName = ConfigInfo.ProviderName;
             DbConfig.Db.DataBase = ConfigInfo.DataBase;
