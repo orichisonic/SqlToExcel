@@ -92,3 +92,13 @@ d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.
 d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\org.in2bits.MyXls.dll
 d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\NPOI.dll
 d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\Ionic.Zip.dll
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\System.Reactive.Core.dll
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\System.Reactive.Interfaces.dll
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\System.Reactive.Linq.dll
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\System.Reactive.PlatformServices.dll
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\System.Reactive.Windows.Threading.dll
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\System.Reactive.Core.xml
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\System.Reactive.Interfaces.xml
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\System.Reactive.Linq.xml
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\System.Reactive.PlatformServices.xml
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\System.Reactive.Windows.Threading.xml
