@@ -89,3 +89,6 @@ d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.
 d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\obj\Debug\Com.Centaline.Framework.SqlExport.Test.Web.csprojResolveAssemblyReference.cache
 d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\obj\Debug\SqlToExcel.dll
 d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\obj\Debug\SqlToExcel.pdb
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\org.in2bits.MyXls.dll
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\NPOI.dll
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\Ionic.Zip.dll
