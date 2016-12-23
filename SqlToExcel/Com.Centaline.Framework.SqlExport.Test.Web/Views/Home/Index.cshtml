@@ -14,9 +14,6 @@
 
     $(document).ready(function() {
         //SearchSqlToPage(1);
-
-
-
         var parameters = {};
         $.ajax({
             type: "post",
@@ -42,8 +39,6 @@
                 alert(xmlHttpRequest);
             },
             complete: function(xml, ts) {
-
-
             }
         });
     });
@@ -186,10 +181,10 @@
         });*@
     }
 
-    function showRealPath(filePath) {
-     $("#uploadfileRealPath")[0].value = filePath;
-      alert(filePath);
-    }
+    //function showRealPath(filePath) {
+    // $("#uploadfileRealPath")[0].value = filePath;
+    //  alert(filePath);
+    //}
 
     //function ok() {
 

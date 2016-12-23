@@ -18,6 +18,7 @@ using SqlToExcel.Module.Common;
 using System.Xml;
 using org.in2bits.MyXls;
 using System.Reactive.Linq;
+using System.Xml.Linq;
 using Spring.Objects.Events.Support;
 
 namespace SqlToExcel.Controllers
@@ -99,7 +100,6 @@ namespace SqlToExcel.Controllers
                     string sql = "SELECT  [UserID],[UserCode],[UserName],[ParentID],[Position],[Mobile],[Email],[Levels],[AttentionTime]FROM Users WHERE CreateStatus = 1 AND(AttentionState = 1); ";
                     object obj = ObjectContainer.Instance.GetObject<ISqlExportService>().ExportToExcel(Request, sql);
                     return ObjectContainer.Instance.GetObject<IJsonSerializer>().ToJson(obj);
-
                     //ExportExcelForPercentForWeb("test", "a.xlsx");
                     //outExcel("test", "e:\\a.xlsx");
                     result = "导出excel成功";
@@ -120,15 +120,22 @@ namespace SqlToExcel.Controllers
         /// NPOI插件保存excel到网页，用于MVC4
         /// </summary>
         /// <returns></returns>
-        public FileResult DownLoadExcel()
+        public ActionResult DownLoadExcel()
         {
-           //延迟30分钟再可以提交
-            TimeSpan span = DateTime.Now - DateTime;
-            if (span.TotalMinutes < 30)
+            string Path = AppDomain.CurrentDomain.BaseDirectory + "Resource\\Config\\DatetimeConfig.xml";
+            XElement xele = XElement.Load(Path);
+            if ((string)xele.Attribute("content") != "")
             {
-                return null;
+                DateTime dateTime = DateTime.Parse((string) xele.Attribute("content"));
+                TimeSpan span = DateTime.Now - dateTime;
+                if (span.TotalMinutes < 1)
+                {
+                    return new EmptyResult(); 
 
+                }
             }
+            //延迟30分钟再可以提交
+         
             string sql = "SELECT  [UserID],[UserCode],[UserName],[ParentID],[Position],[Mobile],[Email],[Levels],[AttentionTime]FROM Users WHERE CreateStatus = 1 AND(AttentionState = 1); ";
             DataTable dt = ObjectContainer.Instance.GetObject<ISqlExportService>().GetDataTableFromSql(Request, sql);
 
@@ -158,12 +165,10 @@ namespace SqlToExcel.Controllers
             book.Write(ms);
             ms.Seek(0, SeekOrigin.Begin);
             DateTime = DateTime.Now;
+            xele.SetAttributeValue("content", DateTime);
+            xele.Save(AppDomain.CurrentDomain.BaseDirectory + "Resource\\Config\\DatetimeConfig.xml");
             return File(ms, "application/vnd.ms-excel", strdate + "Excel.xls");
-
-
         }
-
-    
 
         /// <summary>
         /// MyXls组件保存网页Excel，用于webform的Page.Response
@@ -220,7 +225,6 @@ namespace SqlToExcel.Controllers
                     System.Web.HttpContext.Current.Response.BinaryWrite(data);
                    
                 }
-
                 #endregion
                 //xls = null;
             }
@@ -232,7 +236,6 @@ namespace SqlToExcel.Controllers
                 sheet = null;
                 xls = null;
             }
-
         }
 
         /// <summary>

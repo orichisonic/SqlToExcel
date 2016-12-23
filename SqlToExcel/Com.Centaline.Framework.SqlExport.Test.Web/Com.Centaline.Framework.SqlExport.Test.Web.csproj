@@ -240,6 +240,7 @@
     <Content Include="Dll\Ionic.Zip.dll" />
     <Content Include="Dll\NPOI.dll" />
     <Content Include="Dll\org.in2bits.MyXls.dll" />
+    <Content Include="Resource\Config\DatetimeConfig.xml" />
     <Content Include="Resource\Images\anniu.png" />
     <Content Include="Resource\Images\bgkuang.gif" />
     <Content Include="Resource\Images\bg_banner_01 - 副本.jpg" />
