@@ -2,11 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
-using Com.Centaline.Framework.QuickQuery.Entity;
 using SqlExport.Config;
 using SqlExport.DBUtility.Interface;
 using SqlExport.Interface;

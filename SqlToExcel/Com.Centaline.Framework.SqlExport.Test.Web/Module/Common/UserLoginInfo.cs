@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Web;
-
-namespace SqlToExcel.Module.Common
+﻿namespace SqlToExcel.Module.Common
 {
     public class UserLoginInfo
     {

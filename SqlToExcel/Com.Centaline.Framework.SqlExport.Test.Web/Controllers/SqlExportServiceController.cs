@@ -1,25 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.UI;
-using Antlr.Runtime;
 using Com.Centaline.Framework.Kernel.Json.Interface;
 using Com.Centaline.Framework.QuickQuery.Utils;
 using Spring.Context.Attributes;
 using Spring.Objects.Factory.Attributes;
 using Spring.Objects.Factory.Support;
-using Spring.Stereotype;
 using SqlExport.Interface;
 using SqlToExcel.Module.Common;
-using System.Xml;
 using org.in2bits.MyXls;
 using System.Reactive.Linq;
 using System.Xml.Linq;
-using Spring.Objects.Events.Support;
 
 namespace SqlToExcel.Controllers
 {

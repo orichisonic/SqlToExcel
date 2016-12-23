@@ -1,9 +1,4 @@
 ﻿using Com.Centaline.Framework.QuickQuery.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Com.Centaline.Framework.Kernel.Injection.Interface;
 using Com.Centaline.Framework.QuickQuery;
 
