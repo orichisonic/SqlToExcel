@@ -6,4 +6,4 @@ d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\D
 d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\EPPlus.xml
 d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\obj\Debug\SqlExport.dll
 d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\obj\Debug\SqlExport.pdb
-d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\obj\Debug\Com.Centaline.Framework.SqlExport.csprojResolveAssemblyReference.cache
+d:\Users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\obj\Debug\Com.Centaline.Framework.SqlExport.csprojResolveAssemblyReference.cache

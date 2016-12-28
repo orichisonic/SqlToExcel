@@ -1,0 +1,105 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.ExportToCsv {
+    position: relative;
+    float: left;
+    left: 10px;
+    width: 80px;
+    BORDER-RIGHT: #7b9ebd 1px solid; 
+    PADDING-RIGHT: 2px; 
+    BORDER-TOP: #7b9ebd 1px solid; 
+    PADDING-LEFT: 2px; 
+    FONT-SIZE: 12px; 
+    FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#cecfde); 
+    BORDER-LEFT: #7b9ebd 1px solid; 
+    CURSOR: hand; COLOR: black; 
+    PADDING-TOP: 2px; 
+    BORDER-BOTTOM: #7b9ebd 1px solid;
+   
+}
+
+.tableName {
+    left: 50px;
+    top: 5px;
+    position: relative;
+}
+
+.rowNumber {
+    left: 50px;
+    top: 5px;
+    position: relative;
+
+}
+
+
+.ExportToExcel {
+    position: relative;
+    float: left;
+    left:550px;
+    width: 80px;
+  
+    BORDER-RIGHT: #7b9ebd 1px solid; 
+    PADDING-RIGHT: 2px; 
+    BORDER-TOP: #7b9ebd 1px solid; 
+    PADDING-LEFT: 2px; 
+    FONT-SIZE: 12px; 
+    FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#cecfde); 
+    BORDER-LEFT: #7b9ebd 1px solid; 
+    CURSOR: pointer; COLOR: black; 
+    PADDING-TOP: 2px; 
+    BORDER-BOTTOM: #7b9ebd 1px solid;
+    
+}
+
+.browser {
+    position: relative;
+    float: left;
+    left:500px;
+    width: 80px;
+  
+    BORDER-RIGHT: #7b9ebd 1px solid; 
+    PADDING-RIGHT: 2px; 
+    BORDER-TOP: #7b9ebd 1px solid; 
+    PADDING-LEFT: 2px; 
+    FONT-SIZE: 12px; 
+    FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#cecfde); 
+    BORDER-LEFT: #7b9ebd 1px solid; 
+    CURSOR: pointer; COLOR: black; 
+    PADDING-TOP: 2px; 
+    BORDER-BOTTOM: #7b9ebd 1px solid;
+    
+}
+
+a.classname
+{
+
+  display: block;
+  width: 150px;
+  height: 150px;
+
+}
+
+

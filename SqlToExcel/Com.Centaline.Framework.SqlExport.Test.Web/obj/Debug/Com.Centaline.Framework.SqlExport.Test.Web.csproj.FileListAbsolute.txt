@@ -21,12 +21,6 @@ d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.
 d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\Common.Logging.dll
 d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\EntityFramework.dll
 d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\EntityFramework.SqlServer.dll
-d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\Microsoft.AI.Agent.Intercept.dll
-d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\Microsoft.AI.DependencyCollector.dll
-d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\Microsoft.AI.PerfCounterCollector.dll
-d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\Microsoft.AI.ServerTelemetryChannel.dll
-d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\Microsoft.AI.Web.dll
-d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\Microsoft.AI.WindowsServer.dll
 d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\Microsoft.ApplicationInsights.dll
 d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\Microsoft.AspNet.Identity.Core.dll
 d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\Microsoft.AspNet.Identity.EntityFramework.dll
@@ -51,10 +45,6 @@ d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.
 d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\Common.Logging.xml
 d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\Common.Logging.Core.pdb
 d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\Common.Logging.Core.xml
-d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\Microsoft.AI.DependencyCollector.xml
-d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\Microsoft.AI.ServerTelemetryChannel.xml
-d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\Microsoft.AI.Web.xml
-d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\Microsoft.AI.WindowsServer.xml
 d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\Microsoft.ApplicationInsights.xml
 d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport.Test.Web\bin\Spring.Core.pdb

@@ -1,0 +1,8 @@
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Release\SqlExport.dll
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Release\SqlExport.pdb
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Release\Com.Centaline.Framework.Kernel.dll
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Release\Com.Centaline.Framework.QuickQuery.dll
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Release\EPPlus.dll
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Release\EPPlus.xml
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\obj\Release\SqlExport.dll
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\obj\Release\SqlExport.pdb
