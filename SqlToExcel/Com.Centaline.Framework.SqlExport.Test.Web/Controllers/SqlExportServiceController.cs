@@ -13,6 +13,8 @@ using SqlToExcel.Module.Common;
 using org.in2bits.MyXls;
 using System.Reactive.Linq;
 using System.Xml.Linq;
+using SqlToExcel.Module.Mail;
+using System.Runtime.Remoting.Contexts;
 
 namespace SqlToExcel.Controllers
 {
@@ -109,6 +111,15 @@ namespace SqlToExcel.Controllers
                       .DelaySubscription(interval)
                       .Repeat().Subscribe();
         }
+
+
+        public string SendMail()
+        {
+            Sendmail.sendMail("testTopic","d:\a.xls","testBody");
+            return "";
+
+        }
+
         /// <summary>
         /// NPOI插件保存excel到网页，用于MVC4
         /// </summary>
@@ -123,7 +134,16 @@ namespace SqlToExcel.Controllers
                 TimeSpan span = DateTime.Now - dateTime;
                 if (span.TotalMinutes < 1)
                 {
-                    return new EmptyResult(); 
+                    //Response.Redirect("/Home/Index");
+                    return this.Content("<script>alert('30分钟内不能重复导出到excel!')</script>");
+                   
+                    return this.Content("alert('作成功')", "application/x-javascript");
+                    return Content("alert('购物订单成功处理！');", "text/javascript");
+                    //string script = string.Format("alert('库存不足! ({0})');", ":");
+                    //return JavaScript(script);
+                    return JavaScript("alert('30分钟内不能重复导出到excel!');");
+                    //return Content("<font color='red'>你好啊ContentResult</font>");
+                    // return new EmptyResult(); 
 
                 }
             }
