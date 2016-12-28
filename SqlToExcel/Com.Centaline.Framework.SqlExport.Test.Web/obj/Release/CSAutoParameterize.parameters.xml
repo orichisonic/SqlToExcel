@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters>
-  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection 由应用程序在 web.config 中用来访问数据库的连接字符串。" defaultValue="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\aspnet-SqlToExcel-20161208093758.mdf;Initial Catalog=aspnet-SqlToExcel-20161208093758;Integrated Security=True;User Instance=True" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="d:\\users\\wanglin36\\SqlToExcel\\SqlToExcel\\Com\.Centaline\.Framework\.SqlExport\.Test\.Web\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
-  </parameter>
-</parameters>

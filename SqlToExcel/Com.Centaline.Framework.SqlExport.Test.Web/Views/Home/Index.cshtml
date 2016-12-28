@@ -5,8 +5,6 @@
 <LINK REL=STYLESHEET TYPE="text/css" HREF="../../Resource/Css/Site.css">
 <LINK REL=STYLESHEET TYPE="text/css" HREF="../../Resource/Css/main.css">
 <script type="text/javascript" src="@Url.Content("~/Resource/Scripts/jquery-1.8.3.min.js")"></script>
-<script type="text/javascript" src="@Url.Content("~/Resource/Scripts/template.js")"></script>
-<script type="text/javascript" src="@Url.Content("~/Resource/Scripts/jquery.twbsPagination.min.js")"></script>
 <script type="text/javascript" src="@Url.Content("~/Resource/Scripts/jquery.unobtrusive-ajax.js")"></script>
 
 <div class="jumbotron">
@@ -71,10 +69,12 @@
 @*<div id="SearchSouFunAgentDiv"></div>
 <div id="SearchSouFunAgentPageDiv"></div>
 <div class="ExportToCsv" onclick="SearchSqlToCsv(1)">导出到csv</div>*@
-@using (Ajax.BeginForm("DownLoadExcel", "SqlExportService", new AjaxOptions()))
-{
-    <input type = "submit" value = "导出excel" />
-}
-@*<div id="Export">@Html.ActionLink("点击导出Excel", "DownLoadExcel", "SqlExportService")</div>*@
-@*<div id="SendMail">@Html.ActionLink("发送邮件", "SendMail", "SqlExportService")</div>*@
-@*<div id="Export">导出的文件地址:<input type="file" id="file" name="file" readonly="true"><input type="button" value="click" onclick="ok()">  <div id="ExportToExcel" class="ExportToExcel" onclick="SearchSqlToExcel()">导出到excel</div></div>*@
+<div id="Export">
+    @using (Ajax.BeginForm("DownLoadExcel", "SqlExportService", new AjaxOptions()))
+    {
+        <input type="submit" value="导出excel" />
+    }
+</div>
+    @*<div id="Export">@Html.ActionLink("点击导出Excel", "DownLoadExcel", "SqlExportService")</div>*@
+    @*<div id="SendMail">@Html.ActionLink("发送邮件", "SendMail", "SqlExportService")</div>*@
+    @*<div id="Export">导出的文件地址:<input type="file" id="file" name="file" readonly="true"><input type="button" value="click" onclick="ok()">  <div id="ExportToExcel" class="ExportToExcel" onclick="SearchSqlToExcel()">导出到excel</div></div>*@
