@@ -8,7 +8,7 @@ using Spring.Context.Attributes;
 using Spring.Objects.Factory.Attributes;
 using Spring.Objects.Factory.Support;
 using SqlToExcel.Module.Common;
-using Com.Centaline.Framework.QuickQuery.Utils;
+using SqlToExcel.Module.ClassLibrary;
 
 namespace SqlToExcel.Controllers
 {
@@ -40,7 +40,7 @@ namespace SqlToExcel.Controllers
             {
                 result= "验证失败";
             }
-            return ObjectContainer.Instance.GetObject<IJsonSerializer>().ToJson(result);
+            return JsonSerializer.ToJson(result);
          }
     }
 }

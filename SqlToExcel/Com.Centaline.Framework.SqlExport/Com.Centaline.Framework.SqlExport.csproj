@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SqlExport</RootNamespace>
     <AssemblyName>SqlExport</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -20,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,18 +30,31 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Com.Centaline.Framework.Kernel, Version=0.0.0.1006, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Com.Centaline.Framework.Kernel.0.0.0.1006\lib\Com.Centaline.Framework.Kernel.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Com.Centaline.Framework.QuickQuery, Version=0.0.0.9323, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Com.Centaline.Framework.QuickQuery.0.0.0.9323\lib\Com.Centaline.Framework.QuickQuery.dll</HintPath>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="EPPlus, Version=4.1.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
-      <HintPath>..\packages\EPPlus.4.1.0\lib\net40\EPPlus.dll</HintPath>
+    <Reference Include="NPOI, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.2.1\lib\net40\NPOI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.2.1\lib\net40\NPOI.OOXML.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.2.1\lib\net40\NPOI.OpenXml4Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.2.1\lib\net40\NPOI.OpenXmlFormats.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -56,21 +71,15 @@
   <ItemGroup>
     <Compile Include="Config\ConfigInfo.cs" />
     <Compile Include="Config\DBConfig.cs" />
-    <Compile Include="Config\ExportConfig.cs" />
     <Compile Include="DataTabletoExcel.cs" />
-    <Compile Include="DbToCsv.cs" />
-    <Compile Include="DbToExcel.cs" />
     <Compile Include="DBUtility\CommandInfo.cs" />
     <Compile Include="DBUtility\DbHelperSQL.cs" />
     <Compile Include="DBUtility\Interface\IDBUtility.cs" />
     <Compile Include="Entity\PageResult.cs" />
     <Compile Include="Entity\Result.cs" />
     <Compile Include="Interface\IDataTabletoExcel.cs" />
-    <Compile Include="Interface\IDbToCsv.cs" />
-    <Compile Include="Interface\IDbToExcel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interface\ISqlExportService.cs" />
-    <Compile Include="SqlExportContext.cs" />
     <Compile Include="SqlExportService.cs" />
   </ItemGroup>
   <ItemGroup>

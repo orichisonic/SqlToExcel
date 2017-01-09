@@ -1,8 +1,36 @@
-d:\Users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\SqlExport.dll
-d:\Users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\SqlExport.pdb
-d:\Users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\Com.Centaline.Framework.Kernel.dll
-d:\Users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\Com.Centaline.Framework.QuickQuery.dll
-d:\Users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\EPPlus.dll
-d:\Users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\EPPlus.xml
-d:\Users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\obj\Debug\SqlExport.dll
-d:\Users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\obj\Debug\SqlExport.pdb
+d:\Users\yangqun\Desktop\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\SqlExport.dll
+d:\Users\yangqun\Desktop\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\SqlExport.pdb
+d:\Users\yangqun\Desktop\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\Com.Centaline.Framework.Kernel.dll
+d:\Users\yangqun\Desktop\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\EPPlus.dll
+d:\Users\yangqun\Desktop\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\EPPlus.xml
+d:\Users\yangqun\Desktop\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\obj\Debug\SqlExport.dll
+d:\Users\yangqun\Desktop\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\obj\Debug\SqlExport.pdb
+d:\Users\yangqun\Desktop\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\ICSharpCode.SharpZipLib.dll
+d:\Users\yangqun\Desktop\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\NPOI.dll
+d:\Users\yangqun\Desktop\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\NPOI.OOXML.dll
+d:\Users\yangqun\Desktop\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\NPOI.OpenXml4Net.dll
+d:\Users\yangqun\Desktop\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\NPOI.OpenXmlFormats.dll
+d:\Users\yangqun\Desktop\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\NPOI.xml
+d:\Users\yangqun\Desktop\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\obj\Debug\Com.Centaline.Framework.SqlExport.csprojResolveAssemblyReference.cache
+D:\users\wanglin36\Documents\Tencent Files\546242527\FileRecv\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\SqlExport.dll
+D:\users\wanglin36\Documents\Tencent Files\546242527\FileRecv\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\SqlExport.pdb
+D:\users\wanglin36\Documents\Tencent Files\546242527\FileRecv\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\Com.Centaline.Framework.Kernel.dll
+D:\users\wanglin36\Documents\Tencent Files\546242527\FileRecv\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\users\wanglin36\Documents\Tencent Files\546242527\FileRecv\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\NPOI.dll
+D:\users\wanglin36\Documents\Tencent Files\546242527\FileRecv\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\NPOI.OOXML.dll
+D:\users\wanglin36\Documents\Tencent Files\546242527\FileRecv\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\NPOI.OpenXml4Net.dll
+D:\users\wanglin36\Documents\Tencent Files\546242527\FileRecv\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\NPOI.OpenXmlFormats.dll
+D:\users\wanglin36\Documents\Tencent Files\546242527\FileRecv\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\NPOI.xml
+D:\users\wanglin36\Documents\Tencent Files\546242527\FileRecv\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\obj\Debug\SqlExport.dll
+D:\users\wanglin36\Documents\Tencent Files\546242527\FileRecv\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\obj\Debug\SqlExport.pdb
+E:\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\SqlExport.dll
+E:\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\SqlExport.pdb
+E:\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\Com.Centaline.Framework.Kernel.dll
+E:\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\ICSharpCode.SharpZipLib.dll
+E:\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\NPOI.dll
+E:\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\NPOI.OOXML.dll
+E:\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\NPOI.OpenXml4Net.dll
+E:\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\NPOI.OpenXmlFormats.dll
+E:\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\NPOI.xml
+E:\SqlToExcel\Com.Centaline.Framework.SqlExport\obj\Debug\SqlExport.dll
+E:\SqlToExcel\Com.Centaline.Framework.SqlExport\obj\Debug\SqlExport.pdb
