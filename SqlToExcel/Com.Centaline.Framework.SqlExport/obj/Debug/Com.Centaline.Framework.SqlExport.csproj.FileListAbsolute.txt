@@ -34,3 +34,15 @@ E:\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\NPOI.OpenXmlFormats.dl
 E:\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\NPOI.xml
 E:\SqlToExcel\Com.Centaline.Framework.SqlExport\obj\Debug\SqlExport.dll
 E:\SqlToExcel\Com.Centaline.Framework.SqlExport\obj\Debug\SqlExport.pdb
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\SqlExport.dll
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\SqlExport.pdb
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\Com.Centaline.Framework.Kernel.dll
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\ICSharpCode.SharpZipLib.dll
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\NPOI.dll
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\NPOI.OOXML.dll
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\NPOI.OpenXml4Net.dll
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\NPOI.OpenXmlFormats.dll
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\Debug\NPOI.xml
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\obj\Debug\Com.Centaline.Framework.SqlExport.csprojResolveAssemblyReference.cache
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\obj\Debug\SqlExport.dll
+d:\users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\obj\Debug\SqlExport.pdb
