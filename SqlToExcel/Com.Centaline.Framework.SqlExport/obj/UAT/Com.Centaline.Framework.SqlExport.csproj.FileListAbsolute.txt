@@ -1,0 +1,9 @@
+d:\Users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\UAT\SqlExport.dll
+d:\Users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\UAT\Com.Centaline.Framework.Kernel.dll
+d:\Users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\UAT\ICSharpCode.SharpZipLib.dll
+d:\Users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\UAT\NPOI.dll
+d:\Users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\UAT\NPOI.OOXML.dll
+d:\Users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\UAT\NPOI.OpenXml4Net.dll
+d:\Users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\UAT\NPOI.OpenXmlFormats.dll
+d:\Users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\bin\UAT\NPOI.xml
+d:\Users\wanglin36\SqlToExcel\SqlToExcel\Com.Centaline.Framework.SqlExport\obj\UAT\SqlExport.dll
